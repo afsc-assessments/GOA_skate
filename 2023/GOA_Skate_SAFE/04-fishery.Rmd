@@ -1,0 +1,11 @@
+# Fishery 
+
+A full description of the fishery history can be found in the 2021 GOA skate assessment [@Ormseth2021_skate_assessment]. What follows are any recent significant changes to the fishery or management measures.
+
+*Directed fishery, bycatch, and discards in federal waters*
+
+There has been no directed fishery for skates since 2005. There are incidental catches of skate in other fisheries such as arrowtooth flounder and Pacific Cod. In January 2016, the Alaska Regional Office indefinitely reduced the maximum retainable amount of all skates from 20% to 5%. 
+
+*Management units*
+
+Since 2005, Big skates and Longnose skates have had separate ABCs and TACs for WGOA, CGOA and EGOA to address concerns about disproportionate harvest of skates. Other skates continue to be managed as a Gulf-wide species complex because they are not generally retained and are difficult to distinguish at the species level. See Tables `r params$chapter`.\@ref(tab:Tab-big-cat-ofl), `r params$chapter`.\@ref(tab:Tab-longnose-cat-ofl) and `r params$chapter`.\@ref(tab:Tab-other-cat-ofl) for a time series of the total catch, TAC, ABC and OFL for the three assessment groups. 

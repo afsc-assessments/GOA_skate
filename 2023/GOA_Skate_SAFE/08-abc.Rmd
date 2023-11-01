@@ -1,0 +1,113 @@
+## Harvest Recommendations
+
+*Amendment 56 Reference Points*
+
+All three skate assessment groups are a Tier 5 stock. Therefore harvest recommendations are based on an estimated biomass time series (*B~est~*). The harvest recommendations are calculating as follows; *F~OFL~ = M*, *OFL = F~OFL~* * *B~est~* and *ABC~max~ = 0.75* * *OFL* where *ABC~max~* is the maximum permissible ABC. 
+
+
+*Specification of OFL and Maximum Permissible ABC* \
+[Big skate]{.underline} \
+The REMA model biomass estimate of Big skate for `r year+1` is `r format(bg_bio[3], big.mark=",")` t, therefore the OFL = `r format(bg_fut_OFL[3], big.mark=",")` t and *ABC~max~* = `r format(sum(bg_max_ABC[,3]), big.mark=",")` t. The regional biomass estimates are `r format(bg_bio_pred[1,3], big.mark=",")` t (`r round((bg_bio_pred[1,3]/bg_bio[3]) * 100,1)`%) for the WGOA; `r format(bg_bio_pred[2,3], big.mark=",")` t (`r round((bg_bio_pred[2,3]/bg_bio[3] * 100),1)`%) for the CGOA; and `r format(bg_bio_pred[3,3], big.mark=",")` t (`r round((bg_bio_pred[3,3]/bg_bio[3]) * 100,1)`%) for the EGOA. The resulting region-specific ABCs are `r format(bg_max_ABC[1,3], big.mark=",")` t for the WGOA; `r format(bg_max_ABC[2,3], big.mark=",")` t for the CGOA; and `r format(bg_max_ABC[3,3], big.mark=",")` t for the EGOA. 
+
+[Longnose skate]{.underline} \
+The REMA model biomass estimate of Longnose skate for `r year+1` is `r format(ln_bio[3], big.mark=",")` t, therefore the OFL = `r format(ln_fut_OFL[3], big.mark=",")` t and *ABC~max~* = `r format(sum(ln_max_ABC[,3]), big.mark=",")` t. The regional biomass estimates are `r format(ln_bio_pred[1,3], big.mark=",")` t (`r round((ln_bio_pred[1,3]/ln_bio[3]) * 100,1)`%) for the WGOA; `r format(ln_bio_pred[2,3], big.mark=",")` t (`r round((ln_bio_pred[2,3]/ln_bio[3] * 100),1)`%) for the CGOA; and `r format(ln_bio_pred[3,3], big.mark=",")` t (`r round((ln_bio_pred[3,3]/ln_bio[3]) * 100,1)`%) for the EGOA. The resulting region-specific ABCs are `r format(ln_max_ABC[1,3], big.mark=",")` t for the WGOA; `r format(ln_max_ABC[2,3], big.mark=",")` t for the CGOA; and `r format(ln_max_ABC[3,3], big.mark=",")` t for the EGOA. 
+
+[Other skates]{.underline} \
+The REMA model estimate of Other skate biomass for `r year+1` is `r format(ot_bio[3], big.mark=",")` t, therefore the OFL = `r format(ot_fut_OFL[3], big.mark=",")` t and *ABC~max~* = `r format(ot_max_ABC[3], big.mark=",")` t. The Other skate ABC is not apportioned among regions.
+
+*Status Determination* \
+None of the three assessment groups experienced overfishing in `r year -1`. This statement was determined by comparing the catch in `r year -1` to the associated OFL. For Big skate, the catch and OFL were `r format(round(big_cur_catch$total_catch[1]), big.mark=",")` t and `r format(round(big_cur_catch$OFL[1]), big.mark=",")` t. For Longnose skate, the catch and OFL were `r format(round(ln_cur_catch$total_catch[1]), big.mark=",")` t and `r format(round(ln_cur_catch$OFL[1]), big.mark=",")` t and for Other skates, the catch and OFL were `r format(round(ot_cur_catch$total_catch[1]), big.mark=",")` t and `r format(round(ot_cur_catch$OFL[1]), big.mark=",")` t. 
+
+
+## Risk Table and ABC recommendation
+
+The following template is used to complete the risk table:
+```{r}
+library(flextable)
+library(tidyverse)
+
+
+data.frame(level = c("Level 1: No Conern",
+                     "Level 2: Major Concern",
+                     "Level 3: Extreme concern"),
+           assess = c("Typical to moderately increased uncertainty/minor unresolved issues in assessment.", "Major problems with the stock assessment; very poor fits to data; high level of uncertainty; strong retrospective bias.",
+                      "Severe problems with the stock assessment; severe retrospective bias. Assessment considered unreliable."),
+           pop = c("Stock trends are typical for the stock; recent recruitment is within normal range.",
+                   "Stock trends are highly unusual; very rapid changes in stock abundance, or highly atypical recruitment patterns.",
+                   "Stock trends are unprecedented; More rapid changes in stock abundance than have ever been seen previously, or a very long stretch of poor recruitment compared to previous patterns."),
+           enviro = c("No apparent environmental/ecosystem concerns",
+                      "Multiple indicators showing consistent adverse signals a) across the same trophic level as the stock, and/or b) up or down trophic levels (i.e., predators and prey of the stock)",
+                      "Extreme anomalies in multiple ecosystem indicators that are highly likely to impact the stock; Potential for cascading effects on other ecosystem components"),
+           fish = c("No apparent fishery/resource-use performance and/or behavior concerns",
+                    "Multiple indicators showing consistent adverse signals a) across different sectors, and/or b) different gear types",
+                    "Extreme anomalies in multiple performance  indicators that are highly likely to impact the stock")) %>% 
+  flextable() %>% 
+    font(fontname = "Times", part = "all") %>% 
+    width(j = ~ assess, width = 1.5) %>% 
+    width(j = ~ pop, width = 1.5) %>% 
+    width(j = ~ enviro, width = 1.5) %>% 
+    width(j = ~ fish, width = 1.5) %>% 
+    set_header_labels(level = "",
+                    assess = "Assessment-related considerations",
+                    pop = "Population dynamics considerations",
+                    enviro = "Environmental/ecosystem considerations",
+                    fish = "Fishery Performance") %>% 
+  font(fontname = "Times", part = "all") %>% 
+  fontsize(size = 10) %>% 
+  theme_vanilla() %>% 
+  italic(part = "header") 
+```  
+
+#### Evaluation of risk for GOA skates (all species) in `r year`
+
+*Assessment-related considerations* \
+Skates in the GOA are managed under Tier 5 and are thus by definition data-limited. Skate biomass is reliably estimated by the bottom trawl survey and the REMA model performs well for all stocks and stock/region combinations. There are no considerations that would warrant reducing the ABC below maximum permissible. Rated Level 1, No Concern.
+
+*Population dynamics considerations* \
+The GOA-wide biomass of Big and Longnose skates have been relatively stable since 2005. There is a little concern about the low biomass estimates in EGOA for Big skate and the high catch in EGOA for Longnose skate. However, the biomass estimates in EGOA for Big skate have historically been low and the biomass estimates for Longnose skate in EGOA appear unaffected by the increase in catch. The biomass for Other skates is approximately the same as in 1996, so the low biomass is not unprecedented, and it appears to have been at the level for the past five years. As a result of these observations there are no undue concerns regarding dynamics. Rated Level 1, No Concern.
+
+*Environmental/Ecosystem considerations* \
+The most recent data available suggest an ecosystem risk Level 1 – No Concern: “No apparent environmental/ecosystem concerns” given moderate environmental conditions, limited and mixed information on the abundance of prey, predators, and competitors, and a lack of a mechanistic understanding for the direct and indirect effects of environmental change on the survival and productivity of skates. The Skate complex is dominated in biomass by the Big skate (*Beringraja binoculata*) and Longnose skate (*Raja rhina*), and also includes the Aleutian skate (*Bathyraja aleutica*), the Bering skate (*B. interrupta*), and the Alaska skate (*B. parmifera*).  This summary of environmental considerations for the Skate complex is based on Big skate, a representative of the dominant species retained catch by biomass and minor species of skates (the Aleutian skate, Bering skate and Alaska skate).
+
+**Environment**: While optimal temperatures for skate life stages (all demersal) are not known, it is reasonable to expect that the 2023 average ocean temperatures at depth on the shelf edge and shelf were adequate for skates (AFSC longline survey: @Siwicke2023-Longline, AFSC bottom trawl survey, @Oleary2023). Big skate are primarily found in western and central GOA, at depths of 2-800m, but primarily in nearshore waters at depths less than 100m. Skates spawn and eggs develop on the upper slope and outer shelf, and after hatching distribute across the shelf as juveniles and adults. Growth and development times for skate embryos are directly related to temperature and nursery sites occur within a narrow, undefined range of temperature on the shelf edge [@Hoff2008]. Bottom temperatures on the shelf edge were average in 2023 but have been above average since 2019, with unknown potential impacts on skate embryos. Winds and surface currents can increase transport of eggs and larvae from offshore to nearshore nursery areas, and eddy activity can retain larvae nearshore [@Bailey2008]. The winter of 2022/2023 had variable eddy kinetic energy across the GOA, with  above average eddy kinetic energy in the Haida and Seward locations and below average in the Sitka and Kodiak eddy locations, producing approximately average potential transport of larvae onto the shelf habitat [@Cheng2023]. 
+
+**Prey**: The status of skate prey was unknown with signs of decrease, although considered adequate given their generalist feeding habits. Small skates typically consume small crustaceans and polychaetes, while larger skates consume shrimp, crab, and fishes [@Kemper2017; @Yang2007; @Orlov1998; @Orlov2003]. There were signs of decreased abundance in invertebrate prey (Tanner crab, shrimp, motile epifauna), although Tanner crab remains relatively high (ADF&G trawl survey: @Worton2023, AFSC bottom trawl survey: @Whitehouse2023). Polychaetes and infauna are not well monitored. 
+
+**Predators & Competitors**: There is no cause to suspect increased predation or competitive pressure on the Skate complex. Primary predators of skates include Pacific cod and P. halibut, for larval skates, marine mammals (including sperm whales, sea lions)  and dogfish, for adult skates. P. cod and P. halibut populations remain at relatively low abundance [@Hulson2023]. Populations of Steller sea lions (5%-45% frequency of occurrence of skates in diet, @Trites2007) have stabilized (eastern GOA) or remain greatly reduced (western GOA). Sperm whale populations (28% diet is skate, @Wild2020) are not well known but not expected to have changed. Competitors with overlapping habitat and diets, may include deepwater flatfish (Dover sole) and rex sole. 
+
+
+*Fishery performance* \
+As a nontarget stock, catches of skates in the GOA are influenced by their abundance and by the behavior of target fisheries. Recent changes in maximum retention amounts appear to have reduced targeting and retention of skates. Rated Level 1, No Concern.
+
+*Summary of risk evaluation*: Proper evaluation of risk is difficult for a data-limited stock. However, the available data suggest no concerns that rise above Level 1. No reduction to maximum ABC is recommended.
+
+#### Summary and ABC recommendation
+
+
+```{r}
+l1 = "Level 1: No Concern"
+l2 = "Level 1: No Concern"
+l3 = "Level 1: No Concern"
+l4 = "Level 1: No Concern"
+
+
+data.frame(assess = l1,
+           pop = l1,
+           enviro = l1,
+           fish = l1) %>% 
+  flextable() %>% 
+    width(j = ~ assess, width = 1.5) %>% 
+    width(j = ~ pop, width = 1.5) %>% 
+    width(j = ~ enviro, width = 1.5) %>% 
+    width(j = ~ fish, width = 1.5) %>% 
+    set_header_labels(level = "",
+                    assess = "Assessment-related considerations",
+                    pop = "Population dynamics considerations",
+                    enviro = "Environmental/ecosystem considerations",
+                    fish = "Fishery Performance") %>% 
+  fontsize(size = 10) %>% 
+  font(fontname = "Times", part = "all") %>% 
+  italic(part = "header") 
+```
+
+

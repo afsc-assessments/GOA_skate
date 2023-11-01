@@ -1,0 +1,359 @@
+\pagebreak
+# Tables 
+
+
+```{r Tab-big-cat-ofl}
+
+
+library(here)
+library(tidyverse)
+library(flextable)
+# library(officer)
+
+# year <- 2023
+
+temp_tab <- read.csv(here(year, "data", "output", paste(year,"Big_Skate_OFL_catch.csv", sep = "-"))) %>%
+  select(-assess_group)
+
+tbl <-flextable::regulartable(temp_tab) %>%
+  flextable::set_caption(paste("Harvest specifications and catch (t) for Big skates in GOA, 2005-", year," (the current management regime for GOA skates was initiated in 2005). The ABC and catch are divided into three GOA regulatory regions; Western (W), Central (C), Eastern (E)). R is the percent of Total Catch retained.", sep = "")) %>%
+  flextable::font(fontname = "Times New Roman", part = "all")   %>%
+  flextable::fontsize(size = 11, part = "all") %>%
+  flextable::set_formatter(year = function(x) sprintf("%s", x)) %>%
+  colformat_double(i = 1:length(temp_tab$year), digits = 0)  %>%
+  flextable::add_header_row(value = c( "", "Catch","OFL","ABC","TAC"), colwidths = c(1,5,1,4,4))  %>%
+  flextable::align(align = "center", part = "header") %>%
+  flextable::align(align = "center", part = "body") %>%
+  flextable::compose(i=2, j=1, value = flextable::as_paragraph(as_b("Year")),part = "header") %>%
+  flextable::compose(i=2, j=c(2,8,12), value = flextable::as_paragraph(as_b("W")),part = "header") %>%
+  flextable::compose(i=2, j=c(3,9,13), value = flextable::as_paragraph(as_b("C")),part = "header") %>%
+  flextable::compose(i=2, j=c(4,10,14), value = flextable::as_paragraph(as_b("E")),part = "header") %>%
+  flextable::compose(i=2, j=c(5,7,11,15), value = flextable::as_paragraph(as_b("Total")),part = "header")  %>%
+  flextable::compose(i=2, j=6, value = flextable::as_paragraph(as_b("R")),part = "header")  %>%
+  flextable::bold(i=2,j=5,part = "header")  %>%
+  flextable::bg(j = c(7,12,13,14,15), bg = "#f7f7f7", part = "all") %>%  # this provides the shading
+  flextable::border_remove() %>%
+  flextable::hline_top(part = "header") %>%
+  flextable::hline(i=1,j =2:15, part = "header") %>%
+  flextable::hline_top() %>%
+  flextable::hline_bottom() %>%
+  flextable::set_formatter(E2 = function(x) paste("(", x,")",sep = ""))  %>%
+  # compose(i=15:length(temp_tab$year), j=5, value = as_paragraph( ""), part = "body") %>%
+  flextable::set_formatter(retained = function(x) paste(round(x,0),"%",sep = ""))  %>%
+  flextable::vline(j = c(1,6,7,11), part = "body") %>%
+  flextable::vline(j = c(1,6,7,11), part = "header") %>%
+  flextable::fix_border_issues() %>% 
+  padding(padding = 1, part = "all") %>% 
+  autofit()  
+  
+tbl
+
+
+```
+
+\pagebreak
+
+```{r Tab-longnose-cat-ofl}
+
+library(here)
+library(tidyverse)
+library(flextable)
+# library(officer)
+
+# year <- 2023
+
+temp_tab <- read.csv(here(year, "data", "output", paste(year,"Longnose_Skate_OFL_catch.csv", sep = "-"))) %>%
+  select(-assess_group)
+
+tbl <-flextable::regulartable(temp_tab) %>%
+  flextable::set_caption(paste("Harvest specifications and catch (t) for Longnose skates in GOA, 2005-", year," (the current management regime for GOA skates was initiated in 2005). The ABC and catch are divided into three GOA regulatory regions; Western (W), Central (C), Eastern (E)). R is the percent of Total Catch retained.", sep = "")) %>%
+  flextable::font(fontname = "Times New Roman", part = "all")   %>%
+  flextable::fontsize(size = 11, part = "all") %>%
+  flextable::set_formatter(year = function(x) sprintf("%s", x)) %>%
+  colformat_double(i = 1:length(temp_tab$year), digits = 0)  %>%
+  flextable::add_header_row(value = c( "", "Catch","OFL","ABC","TAC"), colwidths = c(1,5,1,4,4))  %>%
+  flextable::align(align = "center", part = "header") %>%
+  flextable::align(align = "center", part = "body") %>%
+  flextable::compose(i=2, j=1, value = flextable::as_paragraph(as_b("Year")),part = "header") %>%
+  flextable::compose(i=2, j=c(2,8,12), value = flextable::as_paragraph(as_b("W")),part = "header") %>%
+  flextable::compose(i=2, j=c(3,9,13), value = flextable::as_paragraph(as_b("C")),part = "header") %>%
+  flextable::compose(i=2, j=c(4,10,14), value = flextable::as_paragraph(as_b("E")),part = "header") %>%
+  flextable::compose(i=2, j=c(5,7,11,15), value = flextable::as_paragraph(as_b("Total")),part = "header")  %>%
+  flextable::compose(i=2, j=6, value = flextable::as_paragraph(as_b("R")),part = "header")  %>%
+  flextable::bold(i=2,j=5,part = "header")  %>%
+  flextable::bg(j = c(7,12,13,14,15), bg = "#f7f7f7", part = "all") %>%  # this provides the shading
+  flextable::border_remove() %>%
+  flextable::hline_top(part = "header") %>%
+  flextable::hline(i=1,j =2:15, part = "header") %>%
+  flextable::hline_top() %>%
+  flextable::hline_bottom() %>%
+  flextable::set_formatter(E2 = function(x) paste("(", x,")",sep = ""))  %>%
+  # compose(i=15:length(temp_tab$year), j=5, value = as_paragraph( ""), part = "body") %>%
+  flextable::set_formatter(retained = function(x) paste(round(x,0),"%",sep = ""))  %>%
+  flextable::vline(j = c(1,6,7,11), part = "body") %>%
+  flextable::vline(j = c(1,6,7,11), part = "header") %>%
+  flextable::fix_border_issues() %>% 
+  padding(padding = 1, part = "all") %>% 
+  autofit()  
+
+tbl
+
+
+```
+
+\pagebreak
+
+```{r Tab-other-cat-ofl}
+
+library(here)
+library(tidyverse)
+library(flextable)
+# library(officer)
+
+# year <- 2023
+
+temp_tab <- read.csv(here(year, "data", "output", paste(year,"Other_Skate_OFL_catch.csv", sep = "-"))) %>%
+  select(-assess_group)
+
+tbl <-flextable::regulartable(temp_tab) %>%
+  flextable::set_caption(paste("Harvest specifications and catch (t) for Other skates in GOA, 2005-", year," (the current management regime for GOA skates was initiated in 2005). Retained is the percent of Catch retained.", sep = "")) %>%
+  flextable::font(fontname = "Times New Roman", part = "all")   %>%
+  flextable::fontsize(size = 11, part = "all") %>%
+  flextable::set_formatter(year = function(x) sprintf("%s", x)) %>%
+  colformat_double(i = 1:length(temp_tab$year), digits = 0) %>%
+  flextable::align(align = "center", part = "header") %>%
+  flextable::align(align = "center", part = "body") %>%
+  flextable::compose(i=1, j=1, value = flextable::as_paragraph(as_b("Year")),part = "header") %>%
+  flextable::compose(i=1, j=2, value = flextable::as_paragraph(as_b("Catch")),part = "header")  %>%
+  flextable::compose(i=1, j=3, value = flextable::as_paragraph(as_b("Retained")),part = "header")  %>%
+  flextable::bold(i = 1, j = c(4,5,6), part = "header")  %>%
+  flextable::bg(j = 4:6, bg = "#f7f7f7", part = "all") %>%  # this provides the shading
+  # flextable::set_formatter(E2 = function(x) paste("(", x,")",sep = "")) %>%
+  # compose(i=15:length(temp_tab$year), j=2, value = as_paragraph( ""), part = "body") %>%
+  flextable::set_formatter(retained = function(x) paste(round(x,0),"%",sep = ""))  %>%
+  flextable::border_remove() %>%
+  flextable::hline_top(part = "header")  %>%
+  flextable::hline_top() %>%
+  flextable::hline_bottom()  %>%
+  flextable::fix_border_issues() %>% 
+  padding(padding = 1, part = "all") %>% 
+  autofit()  
+  
+tbl
+
+
+```
+
+\pagebreak
+
+```{r tab-tot-bio}
+
+library(here)
+library(tidyverse)
+library(readr)
+library(flextable)
+library(officer)
+
+year <- 2023
+
+temp_tab <- read.csv(here(year, "data", "output", paste(year,"Skate_Total_index.csv", sep = "-")))
+
+tbl <- flextable::regulartable(temp_tab) %>%
+  flextable::set_caption(paste("Gulf-wide biomass estimates (t) and coefficients of variation (CV) for the three assessment groups in the Gulf of Alaska from 1990-", year,". Observed are from the AFSC bottom trawl survey and the Predicted are from the random effects model fitted to the survey time series (REMA model). L95% and U95% are the bounds of the 95% confidence interval for the predicted index." , sep = "")) %>%
+  flextable::font(fontname = "Times New Roman", part = "all")   %>%
+  flextable::fontsize(size = 9, part = "all")  %>%
+  flextable::set_formatter(year = function(x) sprintf("%s", x)) %>%
+  colformat_double(i=1:length(temp_tab$year),
+                   j=c(2,4,5,6,7,9,10,11,12,14,15,16), digits = 0) %>%
+  colformat_double(i=1:length(temp_tab$year), j=c(3,8,13), digits = 2) %>%
+  flextable::add_header_row(value = c( "", "Observed","Predicted","Observed","Predicted","Observed","Predicted"), colwidths = c(1,2,3,2,3,2,3))  %>%
+  flextable::add_header_row(value = c( "", "a","b","c"), colwidths = c(1,5,5,5))  %>%
+  flextable::compose(i=1, j=2:6,
+                     value = flextable::as_paragraph(as_b("Big Skate")),
+                     part = "header") %>%
+  flextable::compose(i=1, j=7:11,
+                     value = flextable::as_paragraph(as_b("Longnose Skate")),
+                     part = "header") %>%
+  flextable::compose(i=1, j=11:15,
+                     value = flextable::as_paragraph(as_b("Other Skate")),
+                     part = "header") %>%
+  flextable::align(align = "center", part = "header") %>%
+  flextable::align(align = "center")  %>%
+  flextable::compose(i=3, j=1,
+                     value = flextable::as_paragraph(as_b("Year")),
+                     part = "header") %>%
+  flextable::compose(i=3, j=c(2,4,7,9,12,14),
+                     value = flextable::as_paragraph(as_b("Index")),
+                     part = "header")  %>%
+  flextable::compose(i=3, j=c(3,8,13),
+                     value = flextable::as_paragraph(as_b("CV")),
+                     part = "header")  %>%
+  flextable::compose(i=3, j=c(5,10,15),
+                     value = flextable::as_paragraph(as_b("L95%")),
+                     part = "header")  %>%
+  flextable::compose(i=3, j=c(6,11,16),
+                     value = flextable::as_paragraph(as_b("U95%")),
+                     part = "header")  %>%
+  flextable::bold(i=2, part = "header") %>%
+  flextable::bg(j = c(4:6,9:11,14:16), bg = "#f7f7f7", part = "all") %>%  # this provides the shading
+  flextable::border_remove() %>%
+  flextable::hline_top(part = "header") %>%
+  flextable::hline(i=1:2,j =2:15, part = "header") %>%
+  flextable::hline_top() %>%
+  flextable::hline_bottom()  %>%
+  flextable::vline(j = c(6,11), part = "body")  %>%
+  flextable::vline(j = c(6,11), part = "header") %>%
+  flextable::width(width = 0.4) %>%
+  flextable::fix_border_issues() %>% 
+  padding(padding = 1.2, part = "all") #  %>%
+  # autofit()  
+
+tbl
+
+
+
+```
+
+\pagebreak
+
+```{r tab-big-bio}
+
+library(here)
+library(tidyverse)
+library(readr)
+library(flextable)
+library(officer)
+
+year <- 2023
+
+temp_tab <- read.csv(here(year, "data", "output", paste(year,"Calculate_biomass_strata_big_skate.csv", sep = "-")))
+
+tbl <- flextable::regulartable(temp_tab) %>%
+  flextable::set_caption(paste("Big skates biomass estimates (t) and coefficients of variation (CV) for three regions of the Gulf of Alaska from 1990-", year,". Observed are from the AFSC bottom trawl survey and the Predicted are the proprotion from the GOA-wide predicted biomass produced from the random effects model fitted to the survey time series (REMA model). L95% and U95% are the bounds of the 95% confidence interval for the predicted index." , sep = "")) %>%
+  flextable::font(fontname = "Times New Roman", part = "all")   %>%
+  flextable::fontsize(size = 9, part = "all")  %>%
+  flextable::set_formatter(year = function(x) sprintf("%s", x)) %>%
+  colformat_double(i=1:length(temp_tab$year),
+                   j=c(2,4,5,6,7,9,10,11,12,14,15,16), digits = 0) %>%
+  colformat_double(i=1:length(temp_tab$year), j=c(3,8,13), digits = 2)  %>%
+  flextable::add_header_row(value = c( "", "Observed","Predicted","Observed","Predicted","Observed","Predicted"), colwidths = c(1,2,3,2,3,2,3))   %>%
+  flextable::add_header_row(value = c( "", "a","b","c"), colwidths = c(1,5,5,5))  %>%
+  flextable::compose(i=1, j=2:6,
+                     value = flextable::as_paragraph(as_b("Western")),
+                     part = "header") %>%
+  flextable::compose(i=1, j=7:11,
+                     value = flextable::as_paragraph(as_b("Central")),
+                     part = "header") %>%
+  flextable::compose(i=1, j=11:15,
+                     value = flextable::as_paragraph(as_b("Eastern")),
+                     part = "header") %>%
+  flextable::align(align = "center", part = "header") %>%
+  flextable::align(align = "center")  %>%
+  flextable::compose(i=3, j=1,
+                     value = flextable::as_paragraph(as_b("Year")),
+                     part = "header") %>%
+  flextable::compose(i=3, j=c(2,4,7,9,12,14),
+                     value = flextable::as_paragraph(as_b("Index")),
+                     part = "header")  %>%
+  flextable::compose(i=3, j=c(3,8,13),
+                     value = flextable::as_paragraph(as_b("CV")),
+                     part = "header")  %>%
+  flextable::compose(i=3, j=c(5,10,15),
+                     value = flextable::as_paragraph(as_b("L95%")),
+                     part = "header")  %>%
+  flextable::compose(i=3, j=c(6,11,16),
+                     value = flextable::as_paragraph(as_b("U95%")),
+                     part = "header")  %>%
+  flextable::bold(i=2, part = "header") %>%
+  flextable::bg(j = c(4:6,9:11,14:16), bg = "#f7f7f7", part = "all") %>%  # this provides the shading
+  flextable::border_remove() %>%
+  flextable::hline_top(part = "header") %>%
+  flextable::hline(i=1:2,j =2:15, part = "header") %>%
+  flextable::hline_top() %>%
+  flextable::hline_bottom()  %>%
+  flextable::vline(j = c(6,11), part = "body")  %>%
+  flextable::vline(j = c(6,11), part = "header") %>%
+  flextable::width(width = 0.4) %>%
+  flextable::fix_border_issues() %>% 
+  padding(padding = 1.2, part = "all") #  %>%
+  # autofit()  
+
+tbl
+
+
+
+```
+
+\pagebreak
+
+```{r tab-longnose-bio}
+
+library(here)
+library(tidyverse)
+library(readr)
+library(flextable)
+library(officer)
+
+year <- 2023
+
+temp_tab <- read.csv(here(year, "data", "output", paste(year,"Calculate_biomass_strata_longnose_skate.csv", sep = "-")))
+
+tbl <- flextable::regulartable(temp_tab) %>%
+  flextable::set_caption(paste("Longnose skates biomass estimates (t) and coefficients of variation (CV) for three regions of the Gulf of Alaska from 1990-", year,". Observed are from the AFSC bottom trawl survey and the Predicted are the proprotion from the GOA-wide predicted biomass produced from the random effects model fitted to the survey time series (REMA model). L95% and U95% are the bounds of the 95% confidence interval for the predicted index." , sep = "")) %>%
+  flextable::font(fontname = "Times New Roman", part = "all")   %>%
+  flextable::fontsize(size = 9, part = "all")  %>%
+  flextable::set_formatter(year = function(x) sprintf("%s", x)) %>%
+  colformat_double(i=1:length(temp_tab$year),
+                   j=c(2,4,5,6,7,9,10,11,12,14,15,16), digits = 0) %>%
+  colformat_double(i=1:length(temp_tab$year), j=c(3,8,13), digits = 2)  %>%
+  flextable::add_header_row(value = c( "", "Observed","Predicted","Observed","Predicted","Observed","Predicted"), colwidths = c(1,2,3,2,3,2,3))   %>%
+  flextable::add_header_row(value = c( "", "a","b","c"), colwidths = c(1,5,5,5))  %>%
+  flextable::compose(i=1, j=2:6,
+                     value = flextable::as_paragraph(as_b("Western")),
+                     part = "header") %>%
+  flextable::compose(i=1, j=7:11,
+                     value = flextable::as_paragraph(as_b("Central")),
+                     part = "header") %>%
+  flextable::compose(i=1, j=11:15,
+                     value = flextable::as_paragraph(as_b("Eastern")),
+                     part = "header") %>%
+  flextable::align(align = "center", part = "header") %>%
+  flextable::align(align = "center")  %>%
+  flextable::compose(i=3, j=1,
+                     value = flextable::as_paragraph(as_b("Year")),
+                     part = "header") %>%
+  flextable::compose(i=3, j=c(2,4,7,9,12,14),
+                     value = flextable::as_paragraph(as_b("Index")),
+                     part = "header")  %>%
+  flextable::compose(i=3, j=c(3,8,13),
+                     value = flextable::as_paragraph(as_b("CV")),
+                     part = "header")  %>%
+  flextable::compose(i=3, j=c(5,10,15),
+                     value = flextable::as_paragraph(as_b("L95%")),
+                     part = "header")  %>%
+  flextable::compose(i=3, j=c(6,11,16),
+                     value = flextable::as_paragraph(as_b("U95%")),
+                     part = "header")  %>%
+  flextable::bold(i=2, part = "header") %>%
+  flextable::bg(j = c(4:6,9:11,14:16), bg = "#f7f7f7", part = "all") %>%  # this provides the shading
+  flextable::border_remove() %>%
+  flextable::hline_top(part = "header") %>%
+  flextable::hline(i=1:2,j =2:15, part = "header") %>%
+  flextable::hline_top() %>%
+  flextable::hline_bottom()  %>%
+  flextable::vline(j = c(6,11), part = "body")  %>%
+  flextable::vline(j = c(6,11), part = "header") %>%
+  flextable::width(width = 0.4) %>%
+  flextable::fix_border_issues() %>% 
+  padding(padding = 1.2, part = "all") #  %>%
+  # autofit()  
+
+tbl
+
+
+
+```
+
+
+
+

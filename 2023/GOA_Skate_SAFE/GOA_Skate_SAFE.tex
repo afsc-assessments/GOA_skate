@@ -1,0 +1,983 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{colortbl}
+\usepackage{hhline}
+\newlength\Oldarrayrulewidth
+\newlength\Oldtabcolsep
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{wrapfig}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={18. Assessment of the Skates Stock Complex in the Gulf of Alaska},
+  pdfauthor={Lee Cronin-Fine},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{18. Assessment of the Skates Stock Complex in the Gulf of Alaska}
+\author{Lee Cronin-Fine\textsuperscript{}}
+\date{November 2023}
+
+\begin{document}
+\maketitle
+
+This report may be cited as:\\
+Cronin-Fine. L, 2023. Assessment of the Skates Stock Complex in the Gulf of Alaska. North Pacific Fishery Management Council, Anchorage, AK. Available from \url{https://www.npfmc.org/library/safe-reports/}
+
+\hypertarget{responses-to-ssc-and-plan-team-comments-on-assessments-in-general}{%
+\subsection{Responses to SSC and Plan Team Comments on Assessments in General}\label{responses-to-ssc-and-plan-team-comments-on-assessments-in-general}}
+
+\begin{quote}
+``The SSC requests that all authors fill out the risk table in 2019\ldots{}'' (SSC December 2018)
+\end{quote}
+
+A risk table has been included in this assessment.
+
+\hypertarget{responses-to-ssc-and-plan-team-comments-specific-to-this-assessment}{%
+\subsection{Responses to SSC and Plan Team Comments Specific to this Assessment}\label{responses-to-ssc-and-plan-team-comments-specific-to-this-assessment}}
+
+\begin{quote}
+``For this cycle, the SSC also agrees with the author's justification for the adjustment of the likelihood weight of the survey index to utilize this new time series more appropriately.''
+\end{quote}
+
+The likelihood weighting has remained consistent with the weights found in the last full assessment.
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Scientific name
+Description of general biology and distribution
+Description of key life history characteristics specific to stock assessments (e.g., special features of reproductive biology)
+Evidence of stock structure, if any
+
+\hypertarget{biology-and-distribution}{%
+\subsection{Biology and Distribution}\label{biology-and-distribution}}
+
+\hypertarget{stock-structure}{%
+\subsection{Stock Structure}\label{stock-structure}}
+
+\hypertarget{fishery}{%
+\section{Fishery}\label{fishery}}
+
+Brief description of fishery history\\
+Description of management measures/unit(s)\\
+Management history (including key changes which may have influenced assessment procedures; selectivity of commercial fishing gear; or distribution of catch by gear, area, or season.\\
+Include a table of total catch, total ABC, total OFL, and total TAC, and associated management measures\\
+Description of the current directed fishery (including gear types, seasons, major fishing locations)\\
+Description of effort and CPUE\\
+Information on discards of this stock or stock complex (from directed fishery for this stock or stock complex)
+
+\hypertarget{description-of-the-directed-fishery}{%
+\subsection{Description of the Directed Fishery}\label{description-of-the-directed-fishery}}
+
+\hypertarget{catch-patterns}{%
+\subsubsection{Catch Patterns}\label{catch-patterns}}
+
+\hypertarget{bycatch-and-discards}{%
+\subsubsection{Bycatch and Discards}\label{bycatch-and-discards}}
+
+\hypertarget{management-measures}{%
+\subsection{Management Measures}\label{management-measures}}
+
+\hypertarget{data}{%
+\section{Data}\label{data}}
+
+(If the data for any particular component described here are so voluminous that the corresponding tables would comprise more than 2 pages, the tables may be placed on an ftp site referenced in the chapter.)
+For Tiers 1-3, insert a text table summarizing the data used in the assessment model (source, type, years included).
+Data which should be presented as time series (starting no later than 1977, if possible):
+The following is a typical example:
+
+The following table summarizes the data used in the stock assessment model for northern rockfish (bold denotes new data for this assessment):
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{1.00in}|p{1.50in}|p{4.00in}}
+
+
+
+\ascline{1.5pt}{666666}{1-3}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{Source}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{Data}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 4in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{Years}}}} \\
+
+\ascline{1.5pt}{666666}{1-3}\endfirsthead 
+
+\ascline{1.5pt}{666666}{1-3}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{Source}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{Data}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 4in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{Years}}}} \\
+
+\ascline{1.5pt}{666666}{1-3}\endhead
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1in+0\tabcolsep}}{} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Survey\ biomass}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 4in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{1984-1999\ (triennial),\ 2001-2019\ (biennial)}}} \\
+
+\ascline{0.75pt}{666666}{2-3}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1in+0\tabcolsep}}{\multirow[c]{-2}{*}{\parbox{1in}{\raggedright \textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{NMFS\ Groundfish\ survey}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Age\ composition}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 4in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{1984,\ 1987,\ 1990,\ 1993,\ 1996,\ 1999,\ 2003,\ 2005,\ 2007,\ 2009,\ 2011,\ 2013,\ 2015,\ 2017,\ 2019}}} \\
+
+\ascline{0.75pt}{666666}{1-3}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1in+0\tabcolsep}}{} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Catch}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 4in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{1961-2020}}} \\
+
+\ascline{0.75pt}{666666}{2-3}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1in+0\tabcolsep}}{} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Age\ composition}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 4in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{1998-2002,\ 2004-2006,\ 2008,\ 2010,\ 2012,\ 2014,\ 2016,\ 2018}}} \\
+
+\ascline{0.75pt}{666666}{2-3}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1in+0\tabcolsep}}{\multirow[c]{-3}{*}{\parbox{1in}{\raggedright \textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{U.S.\ trawl\ fishery}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Length\ composition}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 4in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{1991-1997,\ 2003,\ 2007,\ 2009,\ 2011,\ 2013,\ 2015,\ 2017,\ 2019}}} \\
+
+\ascline{1.5pt}{666666}{1-3}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+\hypertarget{fishery-1}{%
+\subsection{Fishery}\label{fishery-1}}
+
+\hypertarget{catch}{%
+\subsubsection{Catch}\label{catch}}
+
+Catch as used in the model (by area and gear if that is how it is used in the model).
+This table may omitted if this table simply duplicates the catch table shown under ``Management units/measures'').
+In an appendix, present removals from sources other than those that are included in the Alaska Region's official estimate of catch (e.g., removals due to scientific surveys, subsistence fishing, recreational fishing, fisheries managed under other FMPs.)
+
+\hypertarget{age-and-size-composition}{%
+\subsubsection{Age and Size Composition}\label{age-and-size-composition}}
+
+Catch at age or catch at length (including sample sizes), as appropriate
+
+\hypertarget{survey}{%
+\subsection{Survey}\label{survey}}
+
+\hypertarget{biomass-estimates-from-trawl-surveys}{%
+\subsubsection{Biomass Estimates from Trawl Surveys}\label{biomass-estimates-from-trawl-surveys}}
+
+Survey biomass estimates, including at least one measure of sampling variability such as standard error, CV, or 95\% confidence interval (for stocks managed as complexes, be sure to report the sampling variability for the complex-wide survey biomass estimate, not just the individual stocks).
+Complex-wide variance could be computed simply by summing the variances from the survey estimates.
+
+\hypertarget{age-and-size-composition-1}{%
+\subsubsection{Age and Size Composition}\label{age-and-size-composition-1}}
+
+Survey numbers at age or numbers at length (including sample sizes), as appropriate
+
+\hypertarget{maturity-data}{%
+\subsubsection{Maturity Data}\label{maturity-data}}
+
+\hypertarget{analytical-approach}{%
+\section{Analytical approach}\label{analytical-approach}}
+
+\hypertarget{general-model-structure}{%
+\subsection{General Model Structure}\label{general-model-structure}}
+
+\begin{quote}
+Description of overall modeling approach (e.g., age/size structured versus biomass dynamic, maximum likelihood versus Bayesian)
+If standardized software (e.g., Stock Synthesis) is used, give reference to technical documentation where variables and equations are described. If standardized software is not used, then list variables and equations used in the assessment model(s) in tables or appendices as appropriate.
+\end{quote}
+
+This assessment is based on a statistical age-structured model with the catch equation and population dynamics model as described in (\textbf{Fournier1982?}) and elsewhere (e.g., (\textbf{Hilborn1992?}); (\textbf{Schnute1995?}), (\textbf{McAllister1997?})).
+The catch in numbers at age in year \(t (C_{t,a})\) and total catch biomass \((Y_t)\) can be described as:
+
+\begin{align}
+    C_{t,a}     &= \frac{F_{t,a}}{Z_{t,a}} \left(1 - e^{-Z_{t,a}}\right) N_{t,a}, &1 \le t \le T, 1 \le a \le A \\
+    N_{t+1,a+1} &= N_{t,a-1} e^{-Z_{t,a-1}},                                      &1 \le t \le T, 1 \le a < A   \\
+    N_{t+1,A}   &= N_{t,A-1} e^{-Z_{t,A-1}} + N_{t,A} e^{-Z_{t,A}} ,              &1 \le t \le T                \\
+    Z_{t,a}     &= F_{t,a} + M_{t,a}                                              &                             \\
+    C_{t,.}     &= \sum_{a=1}^A{C_{t,a}}                                          &                             \\
+    p_{t,a}     &= \frac{C_{t,a} } {C_{t,.} }                                     &                             \\
+    Y_{t}       &= \sum_{a=1}^A{w_{t,a}C_{t,a}}                                   &                             \\
+\end{align}
+
+where
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3235}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6765}}@{}}
+\toprule()
+\endhead
+\(T\) & is the number of years, \\
+\(A\) & is the number of age classes in the population, \\
+\(N_{t,a}\) & is the number of fish age \(a\) in year \(t\), \\
+\(C_{t,a}\) & is the catch of age class \(a\) in year \(t\), \\
+\(p_{t,a}\) & is the proportion of the total catch in year \(t\), that is in age class \(a\), \\
+\(C_{t}\) & is the total catch in year \(t\), \\
+\(w_{a}\) & is the mean body weight (kg) of fish in age class \(a\), \\
+\(Y_{t}\) & is the total yield biomass in year \(t\), \\
+\(F_{t,a}\) & is the instantaneous fishing mortality for age class \(a\), in year \(t\), \\
+\(M_{t,a}\) & is the instantaneous natural mortality in year \(t\) for age class \(a\), and \\
+\(Z_{t,a}\) & is the instantaneous total mortality for age class \(a\), in year \(t\). \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{description-of-alternative-models}{%
+\subsection{Description of Alternative Models}\label{description-of-alternative-models}}
+
+\begin{quote}
+Description of alternative models included in the assessment, if any (e.g., alternative M values or likelihood weights); note that the base model (i.e., the model most recently accepted by the SSC, either after reviewing the previous year's final assessment or the current year's preliminary assessment) must be included
+Per recommendation of the SSC (10/15), please use the following convention for numbering models:
+When a model constituting a ``major change'' from the original version of the base model is introduced, it is given a label of the form ``Model \emph{yy.j},'' where \emph{yy} is the year (designated by the last two digits) that the model was introduced, and \emph{j} is an integer distinguishing this particular ``major change'' model from other ``major change'' models introduced in the same year.
+When a model constituting only a ``minor change'' from the original version of the base model is introduced, it is given a label of the form ``Model \emph{yy.jx},'' where \emph{x} is a letter distinguishing this particular ``minor change'' model from other ``minor change'' models derived from the original version of the same base model.
+Specifically, please use one of the following four options to distinguish ``major'' from ``minor'' changes:
+\end{quote}
+
+\begin{quote}
+\emph{Option A}\\
+The original version of the base model is the base model from the earliest year relative to which the current base model constitutes only a minor change.
+If Model \emph{yy.j} is the original version of the base model and some other model (provisionally labeled ``Model \emph{M}'') is introduced in year 20zz, define the ``average difference in spawning biomass'' (ADSB) between Model \emph{M} and Model \emph{yy.j} as:
+\end{quote}
+
+\[ ADSB = \sqrt{\sum^{2000+yy}_{y=1977}\frac{(SB_{Model M,y} / SB_{Model yy.j.y} - 1)^2}{yy + 24}}, \]
+
+\begin{quote}
+where both models are run with data through year 20\emph{yy} only (i.e., the year in which the original version of the base model was introduced). If ADSB\textless0.1, the final name of Model \emph{M} should be of the form \emph{Model yy.jx}, where \emph{x} is a letter. If ADSB≥0.1, the final name should be of the form \emph{Model zz.i}, where \emph{i} is an integer. For Tiers 4-5, survey biomass may be used in place of spawning biomass in the above.
+\end{quote}
+
+\begin{quote}
+\emph{Option B}\\
+Same as Option A, except that the model approved by the SSC in 2014 is considered to be the original version of the base model in all cases. \textbf{The SSC noted that Option B can be used if Option A ``poses a significant time commitment for the analyst.''}
+\end{quote}
+
+\begin{quote}
+\emph{Option C}\\
+Same as Option A, except that the distinction between ``major'' and ``minor'' model changes is determined subjectively by the author on the basis of qualitative differences in model structure rather than the performance-based criterion described in Option A. The SSC noted that Option C can be used ``where needed.''
+\end{quote}
+
+\begin{quote}
+\emph{Option D}\\
+Options B and C combined.
+\end{quote}
+
+\hypertarget{parameters-estimated-outside-the-assessment-model}{%
+\subsection{Parameters Estimated Outside the Assessment Model}\label{parameters-estimated-outside-the-assessment-model}}
+
+(Use the above heading for Tiers 1-3)
+
+\hypertarget{parameter-estimates}{%
+\subsection{Parameter Estimates}\label{parameter-estimates}}
+
+(Use the above heading for Tiers 4-6)\\
+List of parameters that are estimated independently of others (e.g., the natural mortality rate, parameters governing the maturity schedule, parameters governing growth {[}length at age, weight at length or age{]}---if not estimated inside the assessment model)
+
+Description of how these parameters are estimated (methods do not necessarily have to be statistical; e.g., \emph{M} could be estimated by referencing a previously published value)
+
+\hypertarget{parameters-estimated-inside-the-assessment-model}{%
+\subsection{Parameters Estimated Inside the Assessment Model}\label{parameters-estimated-inside-the-assessment-model}}
+
+(This section should be omitted for Tiers 4-6)\\
+List of parameters that are estimated conditionally on those described above (e.g., full-selection fishing mortality rates, parameters governing the selectivity schedule, parameters governing growth if estimated inside the assessment model)
+Description of how these parameters are estimated (e.g., error structures assumed, prior distributions used, list of likelihood components)
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+\hypertarget{model-evaluation}{%
+\subsection{Model Evaluation}\label{model-evaluation}}
+
+(This section should be omitted for Tiers 4-6)\\
+Conduct within-model retrospective analysis by rerunning each model successively, dropping data one year at a time.
+Specifically:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Include retrospective analysis extending back 10 years, plot spawning biomass estimates and error bars, plot relative differences, and report Mohn's ``rho'' statistic (see \textbf{Retrospective Working Group report} for formula, \emph{not} Mohn's 1999 paper).
+\item
+  Communicate the uncertainty implied by retrospective variability in biomass estimates.
+\item
+  For the time being, \emph{do not} disqualify a model on the grounds of poor retrospective performance alone.
+\item
+  \emph{Do} consider retrospective performance as one factor in model selection.
+\end{enumerate}
+
+Description of other criteria used to evaluate the model or to choose between alternative models, including the role (if any) of uncertainty.\\
+Evaluation of the model, if only one model is presented; or evaluation of alternative models and selection of final model, if more than one model is presented.\\
+List of final parameter estimates, \textbf{with confidence bounds} or other statistical measures of uncertainty if possible (if the set of parameters includes quantities listed in the ``Time Series Results'' section below, the values of these quantities should be presented in the ``Time Series Results'' section rather than here).
+
+Schedules, if any, defined by final parameter estimates
+
+\hypertarget{time-series-results}{%
+\subsection{Time Series Results}\label{time-series-results}}
+
+(This section should be omitted for Tiers 4-6.
+For Tiers 1-3, items in this section pertain to the authors' recommended model.)
+
+Include a table that has a set of parallel key results) for the previously accepted assessment, compared with new results. At a minimum this table should include spawning biomass and recruitment.
+
+Definition of biomass measures used (e.g., age range used in the ``age+'' biomass)
+
+Definition of recruitment measures used (e.g., numbers at age 3)
+
+Table of estimated biomass time series, including age+ biomass and spawning biomass, \textbf{with confidence bounds} or other statistical measure of uncertainty if possible.
+The time series included in this table \textbf{should end with estimates for the projection year}. Include estimates from previous SAFE for retrospective comparison.
+
+Table of estimated recruitment time series, including average of year classes spawned after 1976, \textbf{with confidence bounds} or other statistical measure of uncertainty if possible. Include estimates from previous SAFE for retrospective comparisons
+
+Table of estimated numbers at age.
+
+Graph of estimated biomass time series, with confidence bounds if possible
+
+Graph of estimated fishing mortality versus estimated spawning stock biomass (phase-plane plot), including applicable OFL and maximum FABC definitions for the stock.
+Biomass should be scaled relative to \(B_{MSY}\) for Tier 1 stocks and \%B\_\{35\%\}\$ for Tier 3 stocks.
+Fishing mortality should be scaled relative to the arithmetic mean of \(F_{MSY}\) for Tier 1 stocks and \(F_{35\%}\) for Tier 3 stocks.
+Include 2 years of projected \emph{F} and \emph{B} in the phase-plane plot.
+
+\hypertarget{harvest-recommendations}{%
+\subsection{Harvest recommendations}\label{harvest-recommendations}}
+
+(Items in this section pertain to the authors' recommended model or approach.
+If the structure of the recommended model or approach differs substantively from the model or approach most recently accepted by the SSC after reviewing either last year's final SAFE report or the current year's preliminary SAFE report, a set of parallel results for the previously accepted model or approach should be included in an attachment.)
+
+\hypertarget{amendment-56-reference-points}{%
+\subsubsection{Amendment 56 Reference Points}\label{amendment-56-reference-points}}
+
+Amendment 56 to the GOA Groundfish Fishery Management Plan defines the ``overfishing level''
+(OFL), the fishing mortality rate used to set OFL (\(F_{OFL}\)), the maximum permissible ABC, and the fishing mortality rate used to set the maximum permissible ABC.
+The fishing mortality rate used to set ABC (\(F_{ABC}\)) may be less than this maximum permissible level, but not greater.
+Because reliable estimates of reference points related to maximum sustainable yield (MSY) are currently not available but reliable estimates of reference points related to spawning per recruit are available, Northern rockfish in the GOA are managed under Tier 3 of Amendment 56.
+Tier 3 uses the following reference points: \(B_{40\%}\), equal to 40\% of the equilibrium spawning biomass that would be obtained in the absence of fishing; \(F_{35\%}\),,equal to the fishing mortality rate that reduces the equilibrium level of spawning per recruit to 35\% of the level that would be obtained in the absence of fishing; and \(F_{40\%}\), equal to the fishing mortality rate that reduces the equilibrium level of spawning per recruit to 40\% of the level that would be obtained in the absence of fishing.
+Estimation of the \(B_{40\%}\) reference point requires an assumption regarding the equilibrium level of recruitment.
+In this assessment, it is assumed that the equilibrium level of recruitment is equal to the average of age-2 recruitments between 1979 and 2021.
+Because of uncertainty in very recent recruitment estimates, we lag 2 years behind model estimates in our projection.
+Other useful biomass reference points which can be calculated using this assumption are \(B_{100\%}\) and \(B_{35\%}\), defined analogously to \(B_{40\%}\).
+The 2023 estimates of these reference points are:
+
+\textbf{TABLE HERE}
+
+\hypertarget{specification-of-ofl-and-maximum-permissible-abc}{%
+\subsubsection{Specification of OFL and Maximum Permissible ABC}\label{specification-of-ofl-and-maximum-permissible-abc}}
+
+Female spawning biomass for 2023 is estimated at 40,462 t.
+This is above the \(B_{40\%}\) value of 33,933 t.
+Under Amendment 56, Tier 3, the maximum permissible fishing mortality for ABC is \(F_{40\%}\) and fishing mortality for OFL is \(F_{35\%}\).
+Applying these fishing mortality rates for 2023, yields the following ABC and OFL:
+
+\textbf{TABLE HERE}
+
+A standard set of projections is required for each stock managed under Tiers 1, 2, or 3 of Amendment 56.
+This set of projections encompasses seven harvest scenarios designed to satisfy the requirements of Amendment 56, the National Environmental Policy Act, and the Magnuson-Stevens Fishery Conservation and Management Act (MSFCMA).
+
+For each scenario, the projections begin with the vector of 2023 numbers at age as estimated in the assessment.
+This vector is then projected forward to the beginning of 2024 using the schedules of natural mortality and selectivity described in the assessment and the best available estimate of total (year-end) catch for 2023.
+In each subsequent year, the fishing mortality rate is prescribed on the basis of the spawning biomass in that year and the respective harvest scenario.
+In each year, recruitment is drawnfrom an inverse Gaussian distribution whose parameters consist of maximum likelihood estimates determined from recruitments estimated in the assessment.
+Spawning biomass is computed in each year based on the time of peak spawning and the maturity and weight schedules described in the assessment.
+Total catch after 2023 is assumed to equal the catch associated with the respective harvest scenario in all years.
+This projection scheme is run 1,000 times to obtain distributions of possible future stock sizes, fishing mortality rates, and catches.
+
+Five of the seven standard scenarios will be used in an Environmental Assessment prepared in conjunction with the final SAFE.
+These five scenarios, which are designed to provide a range of harvest alternatives that are likely to bracket the final TAC for 2019, are as follow (``\(max F_{ABC}\)'' refers to the maximum permissible value of \(F_{ABC}\) under Amendment 56):
+
+\begin{itemize}
+\item
+  Scenario 1: In all future years, \emph{F} is set equal to \(max F_{ABC}\). (Rationale: Historically, TAC has been constrained by ABC, so this scenario provides a likely upper limit on future TACs.)
+\item
+  Scenario 2: In 2023 and 2024, \emph{F} is set equal to a constant fraction of \(max F_{ABC}\), where this fraction is equal to the ratio of the realized catches in 2020-2022 to the ABC recommended in the assessment for each of those years.
+  For the remainder of the future years, maximum permissible ABC is used. (Rationale: In many fisheries the ABC is routinely not fully utilized, so assuming an average ratio catch to ABC will yield more realistic projections.)
+\item
+  Scenario 3: In all future years, \emph{F} is set equal to 50\% of \(max F_{ABC}\). (Rationale: This scenario provides a likely lower bound on FABC that still allows future harvest rates to be adjusted downward when stocks fall below reference levels.)
+\item
+  Scenario 4: In all future years, \emph{F} is set equal to the 2013-2017 average \emph{F}. (Rationale: For some stocks, TAC can be well below ABC, and recent average \emph{F} may provide a better indicator of \(F_{TAC}\) than \(F_{ABC}\).)
+\item
+  Scenario 5: In all future years, \emph{F} is set equal to zero. (Rationale: In extreme cases, TAC may be set at a level close to zero.)
+\end{itemize}
+
+Two other scenarios are needed to satisfy the MSFCMA's requirement to determine whether a stock is currently in an overfished condition or is approaching an overfished condition.
+These two scenarios are as follows (for Tier 3 stocks, the MSY level is defined as \(B_{35\%}\)):
+
+\begin{itemize}
+\item
+  Scenario 6: In all future years, \emph{F} is set equal to \(F_{OFL}\). (Rationale: This scenario determines whether a stock is overfished. If the stock is expected to be 1) above its MSY level in 2018 or 2) above ½ of its MSY level in 2018 and above its MSY level in 2028 under this scenario, then the stock is not overfished.)
+\item
+  Scenario 7: In 2023 and 2024, \emph{F} is set equal to max \(F_{ABC}\), and in all subsequent years F is set equal to FOFL. (Rationale: This scenario determines whether a stock is approaching an overfished condition. If the stock is 1) above its MSY level in 2020 or 2) above 1/2 of its MSY level in 2020 and expected to be above its MSY level in 2030 under this scenario, then the stock is not approaching an overfished condition.)
+\end{itemize}
+
+Spawning biomass, fishing mortality, and yield are tabulated for the seven standard projection scenarios (Table 10.16). The difference for this assessment for projections is in Scenario 2 (Author's \emph{F}); we use pre-specified catches to increase accuracy of short-term projections in fisheries where the catch is usually less than the ABC. This was suggested to help management with setting preliminary ABCs and OFLs for two-year ahead specifications.
+
+In addition to the seven standard harvest scenarios, Amendments 48/48 to the BSAI and GOA Groundfish Fishery Management Plans require projections of the likely OFL two years into the future.
+While Scenario 6 gives the best estimate of OFL for 2023, it does not provide the best estimate of OFL for 2024, because the mean 2023 catch under Scenario 6 is predicated on the 2023 catch being equal to the 2023 OFL, whereas the actual 2023 catch will likely be less than the 2023 OFL.
+The executive summary contains the appropriate one- and two-year ahead projections for both ABC and OFL.
+
+\hypertarget{risk-table-and-abc-recommendation}{%
+\subsection{Risk Table and ABC recommendation}\label{risk-table-and-abc-recommendation}}
+
+The SSC in its December 2018 minutes recommended that all assessment authors use the risk table when determining whether to recommend an ABC lower than the maximum permissible. The following template is used to complete the risk table:
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{0.75in}|p{1.50in}|p{2.00in}|p{1.50in}|p{1.50in}}
+
+
+
+\ascline{1.5pt}{666666}{1-5}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{\textit{}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{\textit{Assessment-related\ considerations}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 2in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{\textit{Population\ dynamics\ considerations}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{\textit{Environmental/ecosystem\ considerations}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{\textit{Fishery\ Performance}}}}} \\
+
+\ascline{1.5pt}{666666}{1-5}\endfirsthead 
+
+\ascline{1.5pt}{666666}{1-5}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{\textit{}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{\textit{Assessment-related\ considerations}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 2in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{\textit{Population\ dynamics\ considerations}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{\textit{Environmental/ecosystem\ considerations}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textbf{\textit{Fishery\ Performance}}}}} \\
+
+\ascline{1.5pt}{666666}{1-5}\endhead
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Level\ 1:\ Normal}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Typical\ to\ moderately\ increased\ uncertainty/minor\ unresolved\ issues\ in\ assessment.}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 2in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Stock\ trends\ are\ typical\ for\ the\ stock;\ recent\ recruitment\ is\ within\ normal\ range.}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{No\ apparent\ environmental/ecosystem\ concerns}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{No\ apparent\ fishery/resource-use\ performance\ and/or\ behavior\ concerns}}} \\
+
+\ascline{0.75pt}{666666}{1-5}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Level\ 2:\ Substantially\ increased\ concerns}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Substantially\ increased\ assessment\ uncertainty/\ unresolved\ issues.}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 2in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Stock\ trends\ are\ unusual;\ abundance\ increasing\ or\ decreasing\ faster\ than\ has\ been\ seen\ recently,\ or\ recruitment\ pattern\ is\ atypical.}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Some\ indicators\ showing\ adverse\ signals\ relevant\ to\ the\ stock\ but\ the\ pattern\ is\ not\ consistent\ across\ all\ indicators.}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Some\ indicators\ showing\ adverse\ signals\ but\ the\ pattern\ is\ not\ consistent\ across\ all\ indicators}}} \\
+
+\ascline{0.75pt}{666666}{1-5}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Level\ 3:\ Major\ Concern}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Major\ problems\ with\ the\ stock\ assessment;\ very\ poor\ fits\ to\ data;\ high\ level\ of\ uncertainty;\ strong\ retrospective\ bias.}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 2in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Stock\ trends\ are\ highly\ unusual;\ very\ rapid\ changes\ in\ stock\ abundance,\ or\ highly\ atypical\ recruitment\ patterns.}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Multiple\ indicators\ showing\ consistent\ adverse\ signals\ a)\ across\ the\ same\ trophic\ level\ as\ the\ stock,\ and/or\ b)\ up\ or\ down\ trophic\ levels\ (i.e.,\ predators\ and\ prey\ of\ the\ stock)}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Multiple\ indicators\ showing\ consistent\ adverse\ signals\ a)\ across\ different\ sectors,\ and/or\ b)\ different\ gear\ types}}} \\
+
+\ascline{0.75pt}{666666}{1-5}
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Level\ 4:\ Extreme\ concern}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Severe\ problems\ with\ the\ stock\ assessment;\ severe\ retrospective\ bias.\ Assessment\ considered\ unreliable.}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 2in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Stock\ trends\ are\ unprecedented;\ More\ rapid\ changes\ in\ stock\ abundance\ than\ have\ ever\ been\ seen\ previously,\ or\ a\ very\ long\ stretch\ of\ poor\ recruitment\ compared\ to\ previous\ patterns.}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Extreme\ anomalies\ in\ multiple\ ecosystem\ indicators\ that\ are\ highly\ likely\ to\ impact\ the\ stock;\ Potential\ for\ cascading\ effects\ on\ other\ ecosystem\ components}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Extreme\ anomalies\ in\ multiple\ performance\ \ indicators\ that\ are\ highly\ likely\ to\ impact\ the\ stock}}} \\
+
+\ascline{1.5pt}{666666}{1-5}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+The table is applied by evaluating the severity of four types of considerations that could be used to support a scientific recommendation to reduce the ABC from the maximum permissible.
+These considerations are stock assessment considerations, population dynamics considerations, environmental/ecosystem considerations, and fishery performance. Examples of the types of concerns that might be relevant include the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ``Assessment considerations---data-inputs: biased ages, skipped surveys, lack of fishery-independent trend data; model fits: poor fits to fits to fishery or survey data, inability to simultaneously fit multiple data inputs; model performance: poor model convergence, multiple minima in the likelihood surface, parameters hitting bounds; estimation uncertainty: poorly-estimated but influential year classes; retrospective bias in biomass estimates.
+\item
+  ``Population dynamics considerations---decreasing biomass trend, poor recent recruitment, inability of the stock to rebuild, abrupt increase or decrease in stock abundance.
+\item
+  ``Environmental/ecosystem considerations---adverse trends in environmental/ecosystem indicators, ecosystem model results, decreases in ecosystem productivity, decreases in prey abundance or availability, increases or increases in predator abundance or productivity.
+\item
+  ``Fishery performance---fishery CPUE is showing a contrasting pattern from the stock biomass trend, unusual spatial pattern of fishing, changes in the percent of TAC taken, changes in the duration of fishery openings.''
+\end{enumerate}
+
+\hypertarget{assessment-considerations}{%
+\paragraph{Assessment considerations}\label{assessment-considerations}}
+
+\hypertarget{population-dynamics-considerations}{%
+\paragraph{Population dynamics considerations}\label{population-dynamics-considerations}}
+
+\hypertarget{environmentalecosystem-considerations}{%
+\paragraph{Environmental/Ecosystem considerations}\label{environmentalecosystem-considerations}}
+
+\hypertarget{fishery-performance}{%
+\paragraph{Fishery performance}\label{fishery-performance}}
+
+\hypertarget{summary-and-abc-recommendation}{%
+\paragraph{Summary and ABC recommendation}\label{summary-and-abc-recommendation}}
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{1.50in}|p{1.50in}|p{1.50in}|p{1.50in}}
+
+
+
+\ascline{1.5pt}{666666}{1-4}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{Assessment-related\ considerations}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{Population\ dynamics\ considerations}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{Environmental/ecosystem\ considerations}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{Fishery\ Performance}}}} \\
+
+\ascline{1.5pt}{666666}{1-4}\endfirsthead 
+
+\ascline{1.5pt}{666666}{1-4}
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{Assessment-related\ considerations}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{Population\ dynamics\ considerations}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{Environmental/ecosystem\ considerations}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\textit{Fishery\ Performance}}}} \\
+
+\ascline{1.5pt}{666666}{1-4}\endhead
+
+
+
+\multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Level\ 1:\ No\ increased\ concerns}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Level\ 1:\ No\ increased\ concerns}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Level\ 1:\ No\ increased\ concerns}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 1.5in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{10}{10}\selectfont{Level\ 1:\ No\ increased\ concerns}}} \\
+
+\ascline{1.5pt}{666666}{1-4}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+\hypertarget{area-allocation-of-harvests}{%
+\subsubsection{Area Allocation of Harvests}\label{area-allocation-of-harvests}}
+
+\hypertarget{status-determination}{%
+\subsubsection{Status Determination}\label{status-determination}}
+
+Under the MSFCMA, the Secretary of Commerce is required to report on the status of each U.S. fishery with respect to overfishing.
+This report involves the answers to three questions: 1) Is the stock being subjected to overfishing? 2) Is the stock currently overfished? 3) Is the stock approaching an overfished condition?
+
+\emph{Is the stock being subjected to overfishing?} The official catch estimate for the most recent complete year (2022) is \emph{correct this later} r catch \%\textgreater\% filter(Year==year-1) \%\textgreater\% pull(Catch) \%\textgreater\% format(., big.mark = ``,'')` t.
+This is less than the 2022 OFL of 5,402 t.
+Therefore, the stock is not being subjected to overfishing.
+
+Harvest Scenarios \#6 and \#7 are intended to permit determination of the status of a stock with respect to its minimum stock size threshold (MSST).
+Any stock that is below its MSST is defined to be overfished.
+Any stock that is expected to fall below its MSST in the next two years is defined to be approaching an overfished condition.
+Harvest Scenarios \#6 and \#7 are used in these determinations as follows:
+
+\emph{Is the stock currently overfished?} This depends on the stock's estimated spawning biomass in 2023:
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi}.}
+  \tightlist
+  \item
+    If spawning biomass for 2023 is estimated to be below ½ \(B_{35\%}\), the stock is below its MSST.
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi}.}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    If spawning biomass for 2023 is estimated to be above \(B_{35\%}\) the stock is above its MSST.
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi}.}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    If spawning biomass for 2023 is estimated to be above ½ \(B_{35\%}\) but below \(B_{35\%}\), the stock's status relative to MSST is determined by referring to harvest Scenario \#6 (Table 10.16).
+    If the mean spawning biomass for 2028 is below \(B_{35\%}\), the stock is below its MSST.
+    Otherwise, the stock is above its MSST.
+  \end{enumerate}
+\end{itemize}
+
+\emph{Is the stock approaching an overfished condition?} This is determined by referring to harvest Scenario \#7:
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi}.}
+  \tightlist
+  \item
+    If the mean spawning biomass for 2025 is below 1/2 \(B_{35\%}\), the stock is approaching an overfished condition.
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi}.}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    If the mean spawning biomass for 2025 is above \(B_{35\%}\), the stock is not approaching an overfished condition.
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi}.}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    If the mean spawning biomass for 2025 is above 1/2 \(B_{35\%}\) but below \(B_{35\%}\), the determination depends on the mean spawning biomass for 2035
+    If the mean spawning biomass for 2035 is below \(B_{35\%}\), the stock is approaching an overfished condition.
+    Otherwise, the stock is not approaching an overfished condition.
+    Based on the above criteria and Table 10.16, the stock is not overfished and is not approaching an overfished condition.
+  \end{enumerate}
+\end{itemize}
+
+The fishing mortality that would have produced a catch for last year equal to last year's OFL is 0.0641.
+
+\hypertarget{ecosystem-considerations}{%
+\section{Ecosystem Considerations}\label{ecosystem-considerations}}
+
+\hypertarget{ecosystem-effects-on-the-stock}{%
+\subsection{Ecosystem Effects on the Stock}\label{ecosystem-effects-on-the-stock}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Predator population trends (historically, in the present, and in the foreseeable future). These trends could affect stock mortality rates over time.
+\item
+  Changes in habitat quality (historically, in the present, and in the foreseeable future). Changes in the physical environment such as temperature, currents, or ice distribution could affect stock migration and distribution patterns, recruitment success, or direct effects of temperature on growth.
+\end{enumerate}
+
+\hypertarget{fishery-effects-on-the-ecosystem}{%
+\subsection{Fishery Effects on the Ecosystem}\label{fishery-effects-on-the-ecosystem}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Fishery-specific contribution to bycatch of prohibited species, forage (including herring and juvenile pollock), HAPC biota (in particular, species common to the target fishery), marine mammals, birds, and other sensitive non-target species (including top predators such as sharks, expressed as a percentage of the total bycatch of that species.
+\item
+  Fishery-specific concentration of target catch in space and time relative to predator needs in space and time (if known) and relative to spawning components.
+\item
+  Fishery-specific effects on amount of large-size target fish.
+\item
+  Fishery-specific contribution to discards and offal production.
+\item
+  Fishery-specific effects on age at maturity and fecundity of the target species.
+\item
+  Fishery-specific effects on EFH non-living substrate (using gear specific fishing effort as a proxy for amount of possible substrate disturbance).
+\end{enumerate}
+
+\hypertarget{data-gaps-and-research-priorities}{%
+\section{Data Gaps and Research Priorities}\label{data-gaps-and-research-priorities}}
+
+\hypertarget{life-history-and-habitat-utilization}{%
+\subsection{Life history and habitat utilization}\label{life-history-and-habitat-utilization}}
+
+\hypertarget{assessment-data}{%
+\subsection{Assessment Data}\label{assessment-data}}
+
+\pagebreak
+\allsectionsfont{\centering}
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\end{CSLReferences}
+
+\hypertarget{tables}{%
+\section{Tables}\label{tables}}
+
+\begin{table}
+
+\caption{\label{tab:tab1}Summary of key management measures and the time series of catch, ABC, and TAC for northern rockfish in the Gulf of Alaska}
+\centering
+\begin{tabular}[t]{rr}
+\toprule
+year & catch\\
+\midrule
+1999 & 1\\
+2000 & 2\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\pagebreak
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{0pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{0.75in}|p{0.75in}}
+
+\caption{Commercial\ catch\ (t)\ and\ management\ action\ for\ northern\ rockfish\ in\ the\ Gulf\ of\ Alaska,\ 1961-present.\ The\ *Description\ of\ the\ catch\ time\ series*\ Section\ describes\ procedures\ use\ to\ estimate\ catch\ during\ 1961-1993.\ Ctach\ estimates\ for\ 1993-2019\ are\ from\ NMFS\ Observer\ Program\ and\ Alaska\ Regional\ Office\ updated\ through\ October\ XX,\ 2020.}\label{tab:tab2}\\
+
+\ascline{1.5pt}{666666}{1-2}
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{year}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{catch}}} \\
+
+\ascline{1.5pt}{666666}{1-2}\endfirsthead \caption[]{Commercial\ catch\ (t)\ and\ management\ action\ for\ northern\ rockfish\ in\ the\ Gulf\ of\ Alaska,\ 1961-present.\ The\ *Description\ of\ the\ catch\ time\ series*\ Section\ describes\ procedures\ use\ to\ estimate\ catch\ during\ 1961-1993.\ Ctach\ estimates\ for\ 1993-2019\ are\ from\ NMFS\ Observer\ Program\ and\ Alaska\ Regional\ Office\ updated\ through\ October\ XX,\ 2020.}\label{tab:tab2}\\
+
+\ascline{1.5pt}{666666}{1-2}
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{year}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{catch}}} \\
+
+\ascline{1.5pt}{666666}{1-2}\endhead
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{1,999}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{1}}} \\
+
+
+
+
+
+\multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{2,000}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 0.75in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{2}}} \\
+
+\ascline{1.5pt}{666666}{1-2}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+\pagebreak
+
+\hypertarget{figures}{%
+\section{Figures}\label{figures}}
+
+\begin{figure}[!h]
+\includegraphics{GOA_Skate_SAFE_files/figure-latex/unnamed-chunk-19-1} \caption{pressure}\label{fig:unnamed-chunk-19}
+\end{figure}
+
+\hypertarget{appendix-10a.-supplemental-catch-data}{%
+\section{Appendix 10a. Supplemental catch data}\label{appendix-10a.-supplemental-catch-data}}
+
+In order to comply with the Annual Catch Limit (ACL) requirements, a dataset has been generated to help estimate total catch and removals from NMFS stocks in Alaska.
+This dataset estimates total removals that occur during non-directed groundfish fishing activities.
+This includes removals incurred during research, subsistence, personal use, recreational, and exempted fishing permit activities, but does not include removals taken in fisheries other than those managed under the groundfish FMP. These estimates represent additional sources of removals to the existing Catch Accounting System estimates.
+For Gulf of Alaska (GOA) northern rockfish, these estimates can be compared to the research removals reported in previous assessments (Heifetz et al.~2009; Table 10 A-1).
+Northern rockfish research removals are minimal relative to the fishery catch and compared to the research removals of other species. The majority of research removals are taken by the Alaska Fisheries Science Center's (AFSC) biennial bottom trawl survey which is the primary research survey used for assessing the population status of northern rockfish in the GOA.
+Other research activities that harvest northern rockfish include longline surveys by the International Pacific Halibut Commission and the AFSC and the State of Alaska's trawl surveys.
+Recreational harvest of northern rockfish rarely occurs.
+Total removals from activities other than a directed fishery have been near 10 t for 2010 -- 2017.
+The 2017 other removals is \textless1\% of the 2018 recommended ABC of 4,529 t and represents a very low risk to the northern rockfish stock. Research harvests from trawl in recent years are higher in odd years due to the biennial cycle of the AFSC bottom trawl survey in the GOA and have been less than 10 t except in 2013 when 18 t were removed.
+These removals do not pose a significant risk to the northern rockfish stock in the GOA.
+
+\hypertarget{references-1}{%
+\subsection*{References}\label{references-1}}
+\addcontentsline{toc}{subsection}{References}
+
+Heifetz, J., D. Hanselman, J. N. Ianelli, S. K. Shotwell, and C. Tribuzio. 2009. Gulf of Alaska northern rockfish. In Stock assessment and fishery evaluation report for the groundfish resources of the Gulf of Alaska as projected for 2010. North Pacific Fishery Management Council, 605 W 4th Ave, Suite 306 Anchorage, AK 99501. pp.~817-874.
+
+\hypertarget{appendix-10b-vast-model-based-abundance}{%
+\section{Appendix 10b: VAST model-based abundance}\label{appendix-10b-vast-model-based-abundance}}
+
+\hypertarget{background}{%
+\subsection{Background}\label{background}}
+
+Model-based abundance indices have a long history of development in fisheries (Maunder and Punt 2004).
+We here use a delta-model that uses two linear predictors (and associated link functions) to model the probability of encounter and the expected distribution of catches (in biomass or numbers, depending upon the specific stock) given an encounter (Lo \emph{et al}. 1992; Stefánsson 1996).\\
+Previous research has used spatial strata (either based on strata used in spatially stratified design, or post-stratification) to approximate spatial variation (Helser \emph{et al}. 2004), although recent research suggests that accounting for spatial heterogeneity within a single stratum using spatially correlated residuals and habitat covariates can improve precision for the wrestling index (Shelton \emph{et al}. 2014).\\
+Model-based indices have been used by the Pacific Fisheries Management Council to account for intra-class correlations among hauls from a single contract vessel since approximately 2004 (Helser \emph{et al}. 2004).\\
+Specific methods evolved over time to account for strata with few samples (Thorson and Ward 2013), and eventually to improve precision based on spatial correlations (Thorson \emph{et al}. 2015) using what became the Vector Autoregressive Spatio-temporal (VAST) model (Thorson and Barnett 2017).
+
+The performance of VAST has been evaluated previously using a variety of designs.\\
+Research has showed improved performance estimating relative abundance compared with spatially-stratified index standardization models (Grüss and Thorson 2019; Thorson \emph{et al}. 2015), while other simulation studies have shown unbiased estimates of abundance trends (Johnson \emph{et al}. 2019).\\
+Brodie \emph{et al}. (2020) showed improved performance in estimating index scale given simulated data relative to generalized additive and machine learning models.\\
+Using real-world case studies, Cao \emph{et al}. (2017) showed how random variation in the placement of tows relative to high-quality habitat could be ``controlled for'' using a spatio-temporal framework, and OLeary \emph{et al}. (2020) showed how combining surveys from the eastern and northern Bering Sea within a spatio-temporal framework could assimilate spatially unbalanced sampling in those regions. Other characteristics of model performance have also been simulation-tested although these results are not discussed further here.
+
+\hypertarget{settings-used-in-2020}{%
+\subsection{Settings used in 2020}\label{settings-used-in-2020}}
+
+The software versions of dependent programs used to generate VAST estimates were:
+
+\texttt{R\ (\textgreater{}=3.5.3),\ INLA\ (18.07.12),\ TMB\ (1.7.15),\ TMBhelper\ (1.2.0),\ VAST\ (3.3.0),\ \ FishStatsUtils\ (2.5.0),\ sumfish\ (3.1.22)}
+
+We used a Poisson-link delta-model (Thorson 2018) involving two linear predictors, and a gamma distribution for the distribution of positive catch rates.
+We extrapolated catch density using 3705 m (2 nmi) X 3705 m (2 nmi) extrapolation-grid cells; this results in 36,690 extrapolation-grid cells for the eastern Bering Sea, 15,079 in the northern Bering Sea and 26,510 for the Gulf of Alaska (some Gulf of Alaska analyses eliminated the deepest stratum with depths \textgreater700 m because of sparse observations, resulting in a 22,604-cell extrapolation grid).
+We used bilinear interpolation to interpolate densities from 500 ``knots'' to these extrapolation-grid cells (i.e, using \texttt{fine\_scale=TRUE} feature); knots were distributed spatially in proportion to the distribution of extrapolation-grid cells (i.e., having an approximately even distribution across space) using \texttt{knot\_method\ =\ \textquotesingle{}grid\textquotesingle{}}.
+No temporal smoothing was used (i.e.~variation was estimated using independent and identically distributed methods).
+We estimated ``geometric anisotropy'' (the tendency for correlations to decline faster in some cardinal directions than others), and included a spatial and spatio-temporal term for both linear predictors.\\
+Finally, we used epsilon bias-correction to correct for retransformation bias (Thorson and Kristensen 2016).
+
+\hypertarget{diagnostics}{%
+\subsubsection{Diagnostics}\label{diagnostics}}
+
+For each model, we confirm that the Hessian matrix is positive definite and the gradient of the marginal likelihood with respect to each fixed effect is near zero (absolute value \textless{} 0.0001).\\
+We then conduct a visual inspection of the quantile-quantile plot for positive catch rates to confirm that it is approximately along the one-to-one line, and also check the frequency of encounters for data binned based on their predicted encounter probability (which again should be along the one-to-one line).\\
+Finally, we plot Pearson residuals spatially, to confirm that there is no residual pattern in positive and negative residuals.
+
+\hypertarget{references-2}{%
+\subsection*{References}\label{references-2}}
+\addcontentsline{toc}{subsection}{References}
+
+Brodie, S.J., Thorson, J.T., Carroll, G., et al.~(2020) Trade-offs in covariate selection for species distribution models: A methodological comparison. Ecography 43, 11--24.
+
+Cao, J., Thorson, J., Richards, A. and Chen, Y. (2017) Geostatistical index standardization improves the performance of stock assessment model: An application to northern shrimp in the Gulf of Maine. Canadian Journal of Fisheries and Aquatic Sciences.
+
+Grüss, A. and Thorson, J.T. (2019) Developing spatio-temporal models using multiple data types for evaluating population trends and habitat usage. ICES Journal of Marine Science 76, 1748--1761.
+
+Helser, T.E., Punt, A.E. and Methot, R.D. (2004) A generalized linear mixed model analysis of a multi-vessel fishery resource survey. Fisheries Research 70, 251--264.
+
+Johnson, K.F., Thorson, J.T. and Punt, A.E. (2019) Investigating the value of including depth during spatiotemporal index standardization. Fisheries Research 216, 126--137.
+
+Lo, N.C.-h., Jacobson, L.D. and Squire, J.L. (1992) Indices of relative abundance from fish spotter data based on delta-lognornial models. Canadian Journal of Fisheries and Aquatic Sciences 49, 2515--2526.
+
+Maunder, M.N. and Punt, A.E. (2004) Standardizing catch and effort data: A review of recent approaches. Fisheries research 70, 141--159.
+
+O'Leary, C.A., Thorson, J.T., Ianelli, J.N. and Kotwicki, S. Adapting to climate-driven distribution shifts using model-based indices and age composition from multiple surveys in the walleye pollock (gadus chalcogrammus) stock assessment. Fisheries Oceanography.
+
+Shelton, A.O., Thorson, J.T., Ward, E.J. and Feist, B.E. (2014) Spatial semiparametric models improve estimates of species abundance and distribution. Canadian Journal of Fisheries and Aquatic Sciences 71, 1655--1666.
+
+Stefánsson, G. (1996) Analysis of groundfish survey abundance data: Combining the GLM and delta approaches. ICES journal of Marine Science 53, 577--588.
+
+Thorson, J.T. (2018) Three problems with the conventional delta-model for biomass sampling data, and a computationally efficient alternative. Canadian Journal of Fisheries and Aquatic Sciences 75, 1369--1382.
+
+Thorson, J.T. and Barnett, L.A. (2017) Comparing estimates of abundance trends and distribution shifts using single-and multispecies models of fishes and biogenic habitat. ICES Journal of Marine Science 74, 1311--1321.
+
+Thorson, J.T. and Kristensen, K. (2016) Implementing a generic method for bias correction in statistical models using random effects, with spatial and population dynamics examples. Fisheries Research 175, 66--74.
+
+Thorson, J.T., Shelton, A.O., Ward, E.J. and Skaug, H.J. (2015) Geostatistical delta-generalized linear mixed models improve precision for estimated abundance indices for West Coast groundfishes. ICES Journal of Marine Science 72, 1297--1310.
+
+Thorson, J.T. and Ward, E.J. (2013) Accounting for space--time interactions in index standardization models. Fisheries Research 147, 426--433.
+
+\end{document}

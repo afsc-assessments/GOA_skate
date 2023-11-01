@@ -1,0 +1,409 @@
+```{r ,echo=F,include=FALSE}
+
+library(here)
+library(tidyverse)
+library(readr)
+library(flextable)
+library(officer)
+
+year <- 2023
+tier <- "5"
+
+
+```
+
+
+
+
+```{r Big Skate Summary table, echo=FALSE, message=TRUE, warning=TRUE}
+
+#### PLEASE NOTE THAT THE YEAR IN THE QUANTITY ROW ARE OFF SINCE PREVIOUSLY SKATE ASSESSMENT DID NOT PROVIDE VALUES FOR 2024!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+# The species looking at
+sp <- "Big skate"               # Common Name
+Scientific_name <- "Beringraja binoculata" # Scientific Name
+
+# reading in the Summary Table
+dat2 <- read.csv(here(year, "data", "output",paste(year,"Summary_of_Results_big_skate.csv", sep = "-"))) 
+
+dat3 <- tail(dat2, 3)
+dat4 <- as.data.frame(matrix(as.numeric(unlist(dat2[3:16,2:5])), nrow = 14, ncol = 4))
+dat5 <- cbind(dat2[3:16,1],dat4)
+
+
+# Get the row names right
+temp <- dat5[[1]]
+Bio_loc <- grep("bio_pred",temp) 
+temp[Bio_loc] <- "Biomass (t)"
+temp[max(Bio_loc) + 1] <- "Biomass (t)"
+max_loc <- grep("max_ABC",temp)
+temp[max_loc] <- "Maximum permissible ABC (t)"
+r_loc <- grep("r_ABC",temp)
+temp[grep("r_ABC",temp)] <- "ABC (t)"
+F_ofl_loc <- grep("F_OFL",temp)
+
+dat5 <- cbind(temp,dat5)
+dat5[[1]][min(max_loc)-1] <- "OFL (t)"
+
+# option for having a think border line
+big_border <- fp_border(width = 2)
+
+
+tbl <- flextable::flextable(dat5) %>%
+  flextable::font(fontname = "Times New Roman", part = "all")   %>%
+  flextable::fontsize(size = 11, part = "all")  %>%
+  flextable::merge_h_range(i = 5:7, j1 = 1, j2 = 2)  %>%
+  merge_at(i = min(Bio_loc):(max(Bio_loc)+1), j = 1, part = "body") %>%
+  merge_at(i = min(max_loc):(max(max_loc)), j = 1, part = "body") %>%
+  merge_at(i = min(r_loc):(max(r_loc)), j = 1, part = "body") %>%
+  merge_at(i = 1, j = 1:2, part = "header")  %>%
+  colformat_double(i = 1:4, j = 3:6, digits = 0) %>%
+  colformat_double(i = 8:14, j = 3:6, digits = 0)  %>%
+  add_body_row(top = T, values = c("","","","","")) %>%
+  add_body_row(top = T, values = c("","","","","")) %>%
+  add_body_row(top = F, values = c("","","","","")) %>%
+  # add_body_row(top = F, values = c("", dat3[1,2],dat3[1,3],dat3[1,4],dat3[1,5])) %>%
+  add_body_row(top = F, values = c("","",dat3[2,2],dat3[2,3],dat3[2,4],dat3[2,5])) %>%
+  add_body_row(top = F, values = c("","",dat3[3,2],dat3[3,3],dat3[3,4],dat3[3,5])) %>%
+  flextable::add_header_row(value = c( "", "a", "b"), colwidths = c(2,2,2)) %>%
+  flextable::add_header_row(value = c("a"), colwidths = c(6)) %>%
+  flextable::compose(i=3, j=1:2,
+                     value = flextable::as_paragraph( "Quantity"),
+                     part = "header") %>%
+  flextable::compose(i = 2, j = 3:4,
+                     value = flextable::as_paragraph( "As estimated or " ,      flextable::as_i("specified last"), " year for:"),
+                     part = "header") %>%
+  flextable::compose(i = 2, j = 5:6,
+                     value = flextable::as_paragraph( "As estimated or ",
+                                                      flextable::as_i("recommended this"),
+                                                      " year for:"),
+                     part = "header") %>%
+  flextable::compose(i = 1, j = 1:6,
+                     value = flextable::as_paragraph(sp," (",flextable::as_i(Scientific_name),")"),
+                     part = "header") %>%
+  flextable::compose(i = 3, j = 3,value = flextable::as_paragraph(as.character(year-1)), part = "header")  %>%
+  flextable::compose(i = 3, j = 4,value = flextable::as_paragraph(as.character(year)), part = "header")  %>%
+  flextable::compose(i = 3, j = 5,value = flextable::as_paragraph(as.character(year+1)), part = "header")  %>%
+  flextable::compose(i = 3, j = 6,value = flextable::as_paragraph(as.character(year+2)), part = "header")  %>%
+  merge_h_range(i = 1:2, j1 = 1, j2 = 2) %>%
+  flextable::compose(i = 1, j = 1,value = flextable::as_paragraph(flextable::as_i("M"),
+                                                                  " (natural mortality rate)"),
+                     part = "body") %>%
+  flextable::compose(i = c(3,11,14), j = 2,value = flextable::as_paragraph("W"),
+                     part = "body") %>%
+  flextable::compose(i = c(4,12,15), j = 2,value = flextable::as_paragraph("C"),
+                     part = "body") %>%
+  flextable::compose(i = c(5,13,16), j = 2,value = flextable::as_paragraph("E"),
+                     part = "body") %>%
+  flextable::compose(i = c(6,10), j = 2,value = flextable::as_paragraph("GOA Wide"),
+                     part = "body") %>%
+  compose(i=1, j=3:6, value = as_paragraph( dat2[[2]][1]), part = "body") %>%
+  compose(i=2, j=1, value = as_paragraph("Tier"), part = "body") %>%
+  compose(i=2, j=3:6, value = as_paragraph(tier), part = "body") %>%
+  flextable::align(align = "center", part = "header") %>%
+  flextable::align(j=3:6, align = "center")  %>%
+  flextable::align(j = 1, part = "header", align="left") %>%
+  flextable::align(i = 1, j=1:6, align = "center", part = "header") %>%
+  flextable::bold(i = 3, j = 1, part = "header")   %>%
+  flextable::bold(i = 1, j = 1:6, part = "header") %>%
+  flextable::compose(i = 18, j = 1,value = flextable::as_paragraph(flextable::as_b("Status")), part = "body")  %>%
+  merge_h_range(i = 18, j1 = 1, j2 = 2) %>%
+  flextable::compose(i = 19, j = 1,value = flextable::as_paragraph("Overfishing?"), part = "body")  %>%
+  merge_h_range(i = 19, j1 = 1, j2 = 2) %>%
+  flextable::width(j = 1, width = 1.1) %>%
+  flextable::width(j = 2, width = .95) %>%
+  flextable::width(j = 3:6, width = 0.65) %>%
+  flextable::bg(j = 3, bg = "#f7f7f7", part = "all") %>%  # this provides the shading for column 2
+  flextable::bg(j = 4, bg = "#f7f7f7", part = "all") %>%  # this provides the shading for column 3
+  flextable::border_remove() %>%
+  flextable::hline_top(part = "header")   %>%
+  flextable::hline(i=1,j =1:6, part = "header") %>%
+  flextable::hline_top(border = big_border) %>%
+  flextable::hline_bottom() %>%
+  flextable::vline_right(part = "body") %>%
+  flextable::vline_right(part = "header") %>%
+  flextable::vline_left(part = "body") %>%
+  flextable::vline_left(part = "header")  %>%
+  flextable::compose(i = F_ofl_loc+2, j = 1,
+                     value = flextable::as_paragraph(flextable::as_i("F"),
+                                                     flextable::as_i(flextable::as_sub("OFL"))), part = "body") %>%
+  flextable::compose(i = (F_ofl_loc+3), j = 1,
+                     value = flextable::as_paragraph(flextable::as_i("maxF"), as_i(flextable::as_sub("ABC"))),
+                     part = "body") %>%
+  flextable::compose(i = (F_ofl_loc+4), j = 1,
+                     value = flextable::as_paragraph(as_i("F"), as_i(flextable::as_sub("ABC"))), part = "body") %>%
+  flextable::compose(i = (F_ofl_loc+6), j = 1,
+                     value = flextable::as_paragraph(flextable::as_i("max"),"ABC (t)"), part = "body") %>%
+  merge_at(i = 17, j = 3:4, part = "body") %>%
+  flextable::compose(i = 17, j = 3:4,
+                     value = flextable::as_paragraph( "As determined " , flextable::as_i("last"), " year for:")) %>%
+   merge_at(i = 17, j = 5:6, part = "body") %>%
+  flextable::compose(i = 17, j = 5:6,
+                     value = flextable::as_paragraph( "As determined " , flextable::as_i("this"), " year for:"))  %>%
+flextable::hline(i=c(2,5,6,9,10,13,16,18), part = "body") %>%
+flextable::vline(j = c(2,4), part = "body") %>%
+flextable::vline(i = 2:3, j = c(2,4), part = "header")  %>%
+flextable::vline(i = c(3:6), j = 1, part = "body") %>%
+flextable::vline(i = (10:16), j = 1, part = "body") %>%
+flextable::align(j = 2, align = "center", part = "body")   %>%
+flextable::bold(i = c(10,14,15,16), j = 5, part = "body") %>%
+flextable::bold(i = 3, j = 5, part = "header") %>%
+flextable::fix_border_issues() %>% 
+padding(padding = 1, part = "all")# %>%
+# flextable::autofit()
+tbl
+```
+
+\  
+
+```{r Longnose Skate Summary Table, echo=FALSE, message=TRUE, warning=TRUE}
+
+
+sp <- "Longnose skate"
+Scientific_name <- "Raja rhina"
+
+
+# reading in the Summary Table
+dat2 <- read.csv(here(year, "data", "output",paste(year,"Summary_of_Results_longnose_skate.csv", sep = "-"))) 
+
+dat3 <- tail(dat2, 3)
+dat4 <- as.data.frame(matrix(as.numeric(unlist(dat2[3:16,2:5])), nrow = 14, ncol = 4))
+dat5 <- cbind(dat2[3:16,1],dat4)
+
+
+# Get the row names right
+temp <- dat5[[1]]
+Bio_loc <- grep("bio_pred",temp) 
+temp[Bio_loc] <- "Biomass (t)"
+temp[max(Bio_loc) + 1] <- "Biomass (t)"
+max_loc <- grep("max_ABC",temp)
+temp[max_loc] <- "Maximum permissible ABC (t)"
+r_loc <- grep("r_ABC",temp)
+temp[grep("r_ABC",temp)] <- "ABC (t)"
+F_ofl_loc <- grep("F_OFL",temp)
+
+dat5 <- cbind(temp,dat5)
+dat5[[1]][min(max_loc)-1] <- "OFL (t)"
+
+# option for having a think border line
+big_border <- fp_border(width = 2)
+
+
+tbl <- flextable::flextable(dat5) %>%
+  flextable::font(fontname = "Times New Roman", part = "all")   %>%
+  flextable::fontsize(size = 11, part = "all")  %>%
+  flextable::merge_h_range(i = 5:7, j1 = 1, j2 = 2)  %>%
+  merge_at(i = min(Bio_loc):(max(Bio_loc)+1), j = 1, part = "body") %>%
+  merge_at(i = min(max_loc):(max(max_loc)), j = 1, part = "body") %>%
+  merge_at(i = min(r_loc):(max(r_loc)), j = 1, part = "body") %>%
+  merge_at(i = 1, j = 1:2, part = "header")  %>%
+  colformat_double(i = 1:4, j = 3:6, digits = 0) %>%
+  colformat_double(i = 8:14, j = 3:6, digits = 0)  %>%
+  add_body_row(top = T, values = c("","","","","")) %>%
+  add_body_row(top = T, values = c("","","","","")) %>%
+  add_body_row(top = F, values = c("","","","","")) %>%
+  # add_body_row(top = F, values = c("", dat3[1,2],dat3[1,3],dat3[1,4],dat3[1,5])) %>%
+  add_body_row(top = F, values = c("","",dat3[2,2],dat3[2,3],dat3[2,4],dat3[2,5])) %>%
+  add_body_row(top = F, values = c("","",dat3[3,2],dat3[3,3],dat3[3,4],dat3[3,5])) %>%
+  flextable::add_header_row(value = c( "", "a", "b"), colwidths = c(2,2,2)) %>%
+  flextable::add_header_row(value = c("a"), colwidths = c(6)) %>%
+  flextable::compose(i=3, j=1:2,
+                     value = flextable::as_paragraph( "Quantity"),
+                     part = "header") %>%
+  flextable::compose(i = 2, j = 3:4,
+                     value = flextable::as_paragraph( "As estimated or " ,      flextable::as_i("specified last"), " year for:"),
+                     part = "header") %>%
+  flextable::compose(i = 2, j = 5:6,
+                     value = flextable::as_paragraph( "As estimated or ",
+                                                      flextable::as_i("recommended this"),
+                                                      " year for:"),
+                     part = "header") %>%
+  flextable::compose(i = 1, j = 1:6,
+                     value = flextable::as_paragraph(sp," (",flextable::as_i(Scientific_name),")"),
+                     part = "header") %>%
+  flextable::compose(i = 3, j = 3,value = flextable::as_paragraph(as.character(year-1)), part = "header")  %>%
+  flextable::compose(i = 3, j = 4,value = flextable::as_paragraph(as.character(year)), part = "header")  %>%
+  flextable::compose(i = 3, j = 5,value = flextable::as_paragraph(as.character(year+1)), part = "header")  %>%
+  flextable::compose(i = 3, j = 6,value = flextable::as_paragraph(as.character(year+2)), part = "header")  %>%
+  merge_h_range(i = 1:2, j1 = 1, j2 = 2) %>%
+  flextable::compose(i = 1, j = 1,value = flextable::as_paragraph(flextable::as_i("M"),
+                                                                  " (natural mortality rate)"),
+                     part = "body") %>%
+  flextable::compose(i = c(3,11,14), j = 2,value = flextable::as_paragraph("W"),
+                     part = "body") %>%
+  flextable::compose(i = c(4,12,15), j = 2,value = flextable::as_paragraph("C"),
+                     part = "body") %>%
+  flextable::compose(i = c(5,13,16), j = 2,value = flextable::as_paragraph("E"),
+                     part = "body") %>%
+  flextable::compose(i = c(6,10), j = 2,value = flextable::as_paragraph("GOA Wide"),
+                     part = "body") %>%
+  compose(i=1, j=3:6, value = as_paragraph( dat2[[2]][1]), part = "body") %>%
+  compose(i=2, j=1, value = as_paragraph("Tier"), part = "body") %>%
+  compose(i=2, j=3:6, value = as_paragraph(tier), part = "body") %>%
+  flextable::align(align = "center", part = "header") %>%
+  flextable::align(j=3:6, align = "center")  %>%
+  flextable::align(j = 1, part = "header", align="left") %>%
+  flextable::align(i = 1, j=1:6, align = "center", part = "header") %>%
+  flextable::bold(i = 3, j = 1, part = "header")   %>%
+  flextable::bold(i = 1, j = 1:6, part = "header") %>%
+  flextable::compose(i = 18, j = 1,value = flextable::as_paragraph(flextable::as_b("Status")), part = "body")  %>%
+  merge_h_range(i = 18, j1 = 1, j2 = 2) %>%
+  flextable::compose(i = 19, j = 1,value = flextable::as_paragraph("Overfishing?"), part = "body")  %>%
+  merge_h_range(i = 19, j1 = 1, j2 = 2) %>%
+  flextable::width(j = 1, width = 1.1) %>%
+  flextable::width(j = 2, width = .95) %>%
+  flextable::width(j = 3:6, width = 0.65) %>%
+  flextable::bg(j = 3, bg = "#f7f7f7", part = "all") %>%  # this provides the shading for column 2
+  flextable::bg(j = 4, bg = "#f7f7f7", part = "all") %>%  # this provides the shading for column 3
+  flextable::border_remove() %>%
+  flextable::hline_top(part = "header")   %>%
+  flextable::hline(i=1,j =1:6, part = "header") %>%
+  flextable::hline_top(border = big_border) %>%
+  flextable::hline_bottom() %>%
+  flextable::vline_right(part = "body") %>%
+  flextable::vline_right(part = "header") %>%
+  flextable::vline_left(part = "body") %>%
+  flextable::vline_left(part = "header")  %>%
+  flextable::compose(i = F_ofl_loc+2, j = 1,
+                     value = flextable::as_paragraph(flextable::as_i("F"),
+                                                     flextable::as_i(flextable::as_sub("OFL"))), part = "body") %>%
+  flextable::compose(i = (F_ofl_loc+3), j = 1,
+                     value = flextable::as_paragraph(flextable::as_i("maxF"), as_i(flextable::as_sub("ABC"))),
+                     part = "body") %>%
+  flextable::compose(i = (F_ofl_loc+4), j = 1,
+                     value = flextable::as_paragraph(as_i("F"), as_i(flextable::as_sub("ABC"))), part = "body") %>%
+  flextable::compose(i = (F_ofl_loc+6), j = 1,
+                     value = flextable::as_paragraph(flextable::as_i("max"),"ABC (t)"), part = "body") %>%
+  merge_at(i = 17, j = 3:4, part = "body") %>%
+  flextable::compose(i = 17, j = 3:4,
+                     value = flextable::as_paragraph( "As determined " , flextable::as_i("last"), " year for:")) %>%
+   merge_at(i = 17, j = 5:6, part = "body") %>%
+  flextable::compose(i = 17, j = 5:6,
+                     value = flextable::as_paragraph( "As determined " , flextable::as_i("this"), " year for:"))  %>%
+flextable::hline(i=c(2,5,6,9,10,13,16,18), part = "body") %>%
+flextable::vline(j = c(2,4), part = "body") %>%
+flextable::vline(i = 2:3, j = c(2,4), part = "header")  %>%
+flextable::vline(i = c(3:6), j = 1, part = "body") %>%
+flextable::vline(i = (10:16), j = 1, part = "body") %>%
+flextable::align(j = 2, align = "center", part = "body")   %>%
+flextable::bold(i = c(10,14,15,16), j = 5, part = "body") %>%
+flextable::bold(i = 3, j = 5, part = "header") %>%
+flextable::fix_border_issues() %>% 
+padding(padding = 1, part = "all")
+
+tbl
+
+```
+
+\
+
+```{r Other Skate Summary Table, echo=FALSE, message=TRUE, warning=TRUE}
+
+
+sp <- "Other skates"
+Scientific_name <- "Bathyraja"
+
+
+# reading in the Summary Table
+dat2 <- read.csv(here(year, "data", "output",paste(year,"Summary_of_Results_other_skate.csv", sep = "-"))) 
+
+dat3 <- tail(dat2, 3)
+dat4 <- as.data.frame(matrix(as.numeric(unlist(dat2[3:9,2:5])), nrow = 7, ncol = 4))
+dat5 <- cbind(dat2[3:9,1],dat4)
+
+
+# year <- 2023
+big_border <- fp_border(width = 2)
+
+
+tbl <- flextable::flextable(dat5) %>%
+  flextable::font(fontname = "Times New Roman", part = "all")   %>%
+  flextable::fontsize(size = 11, part = "all")  %>%
+  colformat_double(i = 1, j = 2:5, digits = 0) %>%
+  colformat_double(i = 5:7, j = 2:5, digits = 0)  %>%
+  add_body_row(top = T, values = c("","","","","")) %>%
+  add_body_row(top = T, values = c("","","","","")) %>%
+  add_body_row(top = F, values = c("","","","","")) %>%
+  add_body_row(top = F, values = c("",dat3[2,2],dat3[2,3],dat3[2,4],dat3[2,5])) %>%
+  add_body_row(top = F, values = c("",dat3[3,2],dat3[3,3],dat3[3,4],dat3[3,5])) %>%
+  flextable::add_header_row(value = c( "", "a", "b"), colwidths = c(1,2,2)) %>%
+  flextable::add_header_row(value = c("a"), colwidths = c(5)) %>%
+  flextable::compose(i=3, j=1,
+                     value = flextable::as_paragraph( "Quantity"),
+                     part = "header") %>%
+  flextable::compose(i = 2, j = 2:3,
+                     value = flextable::as_paragraph( "As estimated or " ,      flextable::as_i("specified last"), " year for:"),
+                     part = "header") %>%
+  flextable::compose(i = 2, j = 4:5,
+                     value = flextable::as_paragraph( "As estimated or ",
+                                                      flextable::as_i("recommended this"),
+                                                      " year for:"),
+                     part = "header") %>%
+  flextable::compose(i = 1, j = 1:5,
+                     value = flextable::as_paragraph(sp," (",flextable::as_i(Scientific_name),")"),
+                     part = "header") %>%
+  flextable::compose(i = 3, j = 2,value = flextable::as_paragraph(as.character(year-1)), part = "header")  %>%
+  flextable::compose(i = 3, j = 3,value = flextable::as_paragraph(as.character(year)), part = "header")  %>%
+  flextable::compose(i = 3, j = 4,value = flextable::as_paragraph(as.character(year+1)), part = "header")  %>%
+  flextable::compose(i = 3, j = 5,value = flextable::as_paragraph(as.character(year+2)), part = "header")   %>%
+  flextable::compose(i = 1, j = 1,value = flextable::as_paragraph(flextable::as_i("M"),
+                                                                  " (natural mortality rate)"),
+                     part = "body") %>%
+  compose(i=1, j=2:5, value = as_paragraph( dat2[[2]][1]), part = "body") %>%
+  compose(i=2, j=1, value = as_paragraph("Tier"), part = "body") %>%
+  compose(i=2, j=2:5, value = as_paragraph(tier), part = "body") %>%
+  flextable::align(align = "center", part = "header") %>%
+  flextable::align(j=2:5, align = "center")  %>%
+  flextable::align(j = 1, part = "header", align="left") %>%
+  flextable::align(i = 1, j=1:5, align = "center", part = "header") %>%
+  flextable::bold(i = 3, j = 1, part = "header")   %>%
+  flextable::bold(i = 1, j = 1:5, part = "header")  %>%
+  flextable::compose(i = 11, j = 1,value = flextable::as_paragraph(flextable::as_b("Status")), part = "body")  %>%
+  flextable::compose(i = 12, j = 1,value = flextable::as_paragraph("Overfishing?"), part = "body")  %>%
+  flextable::width(j = 1, width = 2.25) %>%
+  flextable::width(j = 2:5, width = 0.63) %>%
+  flextable::bg(j = 2, bg = "#f7f7f7", part = "all") %>%  # this provides the shading for column 2
+  flextable::bg(j = 3, bg = "#f7f7f7", part = "all") %>%  # this provides the shading for column 3
+  flextable::border_remove() %>%
+  flextable::hline_top(part = "header")   %>%
+  flextable::hline(i=1,j =1:5, part = "header") %>%
+  flextable::hline_top(border = big_border) %>%
+  flextable::hline_bottom() %>%
+  flextable::vline_right(part = "body") %>%
+  flextable::vline_right(part = "header") %>%
+  flextable::vline_left(part = "body") %>%
+  flextable::vline_left(part = "header") %>%
+  flextable::compose(i = 4, j = 1,
+                     value = flextable::as_paragraph(flextable::as_i("F"),
+                                                     flextable::as_i(flextable::as_sub("OFL"))), part = "body") %>%
+  flextable::compose(i = (5), j = 1,
+                     value = flextable::as_paragraph(flextable::as_i("maxF"), as_i(flextable::as_sub("ABC"))),
+                     part = "body") %>%
+  flextable::compose(i = (6), j = 1,
+                     value = flextable::as_paragraph(as_i("F"), as_i(flextable::as_sub("ABC"))), part = "body") %>%
+  flextable::compose(i = 7, j = 1,
+                     value = flextable::as_paragraph("OFL (t)"), part = "body") %>%
+  flextable::compose(i = (8), j = 1,
+                     value = flextable::as_paragraph(flextable::as_i("max"),"ABC (t)"), part = "body") %>%
+  flextable::compose(i = (9), j = 1,
+                     value = flextable::as_paragraph("ABC (t)"), part = "body") %>%
+  flextable::compose(i = (3), j = 1,
+                     value = flextable::as_paragraph("Biomass (t)"), part = "body") %>%
+  merge_at(i = 10, j = 2:3, part = "body") %>%
+  flextable::compose(i = 10, j = 2:3,
+                     value = flextable::as_paragraph( "As determined " , flextable::as_i("last"), " year for:")) %>%
+   merge_at(i = 10, j = 4:5, part = "body") %>%
+  flextable::compose(i = 10, j = 4:5,
+                     value = flextable::as_paragraph( "As determined " , flextable::as_i("this"), " year for:"))   %>%
+flextable::hline(i=c(2,3,6,7,9,11), part = "body") %>%
+flextable::vline(j = c(1,3), part = "body") %>%
+flextable::vline(i = 2:3, j = c(1,3), part = "header")  %>%
+flextable::bold(i = c(7,9), j = 4, part = "body") %>%
+flextable::bold(i = 3, j = 4, part = "header") %>%
+flextable::fix_border_issues() %>% 
+padding(padding = 1, part = "all")
+
+tbl
+
+```

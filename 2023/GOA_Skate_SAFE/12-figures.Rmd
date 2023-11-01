@@ -1,0 +1,75 @@
+\pagebreak
+
+# Figures
+\
+
+```{r fig-all-index, fig.cap= paste("Biomass estimates (t) for Big skates (top), Longnose skates (middle), and Other skates (bottom) in the Gulf of Alaska between 1990-", year+2, ", from the AFSC bottom trawl survey (dots) and the random-effects model (RE) (black line). The grey shaded region is 95% confidence interval (in log-space) from the REMA model while the error bars are the 95% confidence interval (in log-space) from the survey. Note that vertical scales differ between the plots.", sep = "")}
+
+knitr::include_graphics(here::here(year,"figs", paste(year,"Skate_Biomass_Estimate.png", sep = "_")))
+
+```
+
+\pagebreak
+
+
+```{r fig-big-index, fig.cap= paste("Biomass estimates (t) for Big skate in the three Gulf of Alaska regions from the AFSC bottom trawl survey (dots) and the proprotion in each area from the GOA-wide predicted Big skate biomass produced from the random effects model fitted to the survey time series (REMA model) (black line) from 1990-",year+2,". The grey shaded region is 95% confidence interval (in log-space) calculated using values from REMA while the error bars are the 95% confidence interval (in log-space) from the survey. Note that vertical scales differ between the plots.", sep = "")}
+
+knitr::include_graphics(here::here(year,"figs", paste(year,"Big_Regional_Biomass_Estimate.png", sep = "_")))
+
+```
+
+\pagebreak
+
+```{r fig-ln-index, fig.cap= paste("Biomass estimates (t) for Longnose skates in the three Gulf of Alaska regions from the AFSC bottom trawl survey (dots) and the proprotion in each area from the GOA-wide predicted Longnose skate biomass produced from the random effects model fitted to the survey time series (REMA model) (black line) from 1990-",year+2,". The grey shaded region is 95% confidence interval (in log-space) calculated using values from REMA while the error bars are the 95% confidence interval (in log-space) from the survey. Note that vertical scales differ between the plots.", sep = "")}
+
+knitr::include_graphics(here::here(year,"figs", paste(year,"Longnose_Regional_Biomass_Estimate.png", sep = "_")))
+
+```
+
+\pagebreak
+
+```{r fig-all-cat-ofl, fig.cap= paste("Catch, ABC and TAC for Big, Longnose and Other skates from 2005-", year, ". If the ABC is not visible, it means the TAC equals the ABC for that year.", sep = "")}
+
+knitr::include_graphics(here::here(year,"figs", paste(year,"All_Skate_catch_specs.png", sep = "_")))
+
+
+# paste("Catch, ABC and TAC for Big, Longnose and Other skates from 2005-", year, ". If the ABC is not visible, it means the TAC equals the ABC for that year.", sep = "")
+
+
+```
+
+
+\pagebreak
+
+```{r fig-area-cat-ofl, fig.cap= paste("Catch, ABC and TAC in the three Gulf of Alaska regions (Western [W], Central [C], and Eastern [E]) for Big and Longnose skates from 2005-", year, ". If the ABC is not visible, it means the TAC equals the ABC for that year.", sep = "")}
+
+knitr::include_graphics(here::here(year,"figs", paste(year,"Area_Skate_catch_specs.png", sep = "_")))
+
+
+# paste("Catch, ABC and TAC for Big, Longnose and Other skates from 2005-", year, ". If the ABC is not visible, it means the TAC equals the ABC for that year.", sep = "")
+
+
+```
+
+
+\pagebreak
+
+```{r fig-area-exploit, fig.cap= paste("Exploitation rate in the three Gulf of Alaska regions (Western [WGOA], Central [CGOA], and Eastern [EGOA]) for Big and Longnose skates from 2005-", year, ". The dashed lines are the mean exploitation rates for the associated color.", sep = "")}
+
+knitr::include_graphics(here::here(year,"figs", paste(year,"Area_Skate_exploitation_rate.png", sep = "_")))
+
+
+
+```
+
+\pagebreak
+
+```{r fig-tot-exploit, fig.cap= paste("Gulf of Alaska wide exploitation rate for all three assessment groups (Big skate, Longose skate and Other skates) from 2005-", year, ". The dashed lines are the mean exploitation rates for the associated color.", sep = "")}
+
+knitr::include_graphics(here::here(year,"figs", paste(year,"All_Skate_exploitation_rate.png", sep = "_")))
+
+
+
+```
+
+

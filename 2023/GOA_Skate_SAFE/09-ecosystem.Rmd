@@ -1,0 +1,4 @@
+# Ecosystem Considerations
+
+A full description of the ecosystem considerations can be found in the 2021 GOA skate assessment [@Ormseth2021_skate_assessment]. There is also a thorough ecological description in the **Risk Table and ABC recommendation** segment under the **Results** section.
+

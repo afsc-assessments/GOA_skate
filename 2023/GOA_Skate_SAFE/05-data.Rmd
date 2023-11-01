@@ -1,0 +1,24 @@
+# Data
+
+## Fishery
+
+*Catch*
+
+See Tables `r params$chapter`.\@ref(tab:Tab-big-cat-ofl), `r params$chapter`.\@ref(tab:Tab-longnose-cat-ofl) and `r params$chapter`.\@ref(tab:Tab-other-cat-ofl)  for a time series of the total catch for the three assessments groups from 2005 to `r year`. The `r year` catch data are incomplete. They were last updated on `r cat_dat_date`.
+
+*Age and Size Composition*
+
+Fishery observers have been collecting length composition data since 2009. However, they are not used to determine stock status for any of the three assessment groups.
+
+## Survey
+
+There are several potential indices of skate abundance in the Gulf of Alaska, including longline and trawl surveys. For this assessment, only the AFSC bottom trawl surveys 1984-2019 is used when determining harvest recommendations and biomass estimates since it has the most comprehensive spatial coverage of the available surveys. Information on the other potential indices can be found in the 2021 GOA skate assessment [@Ormseth2021_skate_assessment]. 
+
+#### AFSC bottom trawl survey biomass estimates
+The AFSC bottom trawl survey was a triennial survey until 2003 when it became biannual. Biomass estimates from the survey for all three assessments groups can be found in Table `r params$chapter`.\@ref(tab:tab-tot-bio). The survey biomass estimates for Big and Longnose skates has been pretty stable for the past five years with little evidence of the population increasing or decreasing (Figure `r params$chapter`-\@ref(fig:fig-all-index)). The `r year` survey biomass estimate for Big skate estimate increased by `r round(b_ch)`% while the Longnose survey biomass estimate decreased by `r abs(round(ln_ch))`% when compared to the previous (`r year -2`) survey biomass estimate. Both are well within the `r year -2` survey biomass estimated confidence intervals. As for Other skates, their survey biomass estimates declining from 2013-2019. It has remained around the same low level ever since. The `r year` survey biomass estimate (`r format(round(ot_cur_index), big.mark=",")` t) is the lowest value since 1993 (Figure `r params$chapter`-\@ref(fig:fig-all-index)). 
+
+The GOA regional survey biomass estimates for Big skate are in Table  `r params$chapter`.\@ref(tab:tab-big-bio). These survey estimates have larger coefficient of variance (CV) when compared to the GOA-wide estimates. Big skate are most abundant in CGOA. The survey biomass estimates in CGOA and WGOA appears relatively stable though there is a lot of variability. The EGOA survey biomass estimates have been declining since 2019 with the lowest survey biomass estimate (`r format(big_cur_EGOA, big.mark=",")` t) occurring in `r year` (Figure `r params$chapter`-\@ref(fig:fig-big-index)). It is difficult to determine the severity of this decline given the large CVs.
+
+The GOA regional survey biomass estimates for Longnose skate are in Table `r params$chapter`.\@ref(tab:tab-longnose-bio). These survey estimates also have larger CVs when compared to the GOA-wide estimates. Longnose skate are the most abundant in CGOA. The survey biomass estimates in all three areas appear to be relatively stable thought there is a lot of variability (Figure `r params$chapter`-\@ref(fig:fig-ln-index)). 
+
+
