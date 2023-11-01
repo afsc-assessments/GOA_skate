@@ -1,0 +1,32 @@
+# Ignore files
+<<<<<<< HEAD
+*.user
+*.Rhistory
+*.out
+=======
+*.Rproj.user
+*.Rhistory
+>>>>>>> main
+.Rhistory
+.Rproj.user
+.Rhistory
+.Rproj.user/C1362183/pcs/files-pane.pper
+Hybrid Method for Back Calculating F with list functions.R
+Hybrid Method for Back Calculating F.R
+orginal area historical catch check.txt
+update_functions_for_control_and_data_files.R
+update_functions_for_reading_catch_equation_variables.R
+Biomass_Pcod.csv
+.Rproj.user/C1362183/pcs/files-pane.pper
+
+# Ignore directory
+Comparing ADMB and TMB REMA model/
+Data/
+GOA_skate/
+Jane advice on REMA/
+Past Assessments/
+Previous Safe Documents/
+R code/
+RE models/
+Test Ormseth method understanding/
+Zip files/

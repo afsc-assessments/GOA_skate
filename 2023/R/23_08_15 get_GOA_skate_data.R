@@ -255,7 +255,7 @@ tot_tac_abc_pl <- ggplot(tot_specs %>%
 print(tot_tac_abc_pl)
 
 ggsave(here::here(current_yr, "figs", paste(current_yr,"All_Skate_catch_specs.png",sep = "_")), dpi = 300, units = 'in',
-       height = 4, width = 7,bg = 'white')
+       height = 7, width = 9,bg = 'white')
 
 
 area_specs <- big_cat_OFL %>%
@@ -307,5 +307,5 @@ area_tac_abc_pl <- ggplot(area_specs %>%
 print(area_tac_abc_pl)
 
 ggsave(here::here(current_yr, "figs", paste(current_yr,"Area_Skate_catch_specs.png",sep = "_")), dpi = 300, units = 'in',
-       height = 4, width = 7,bg = 'white')
+       height = 7, width = 9,bg = 'white')
 

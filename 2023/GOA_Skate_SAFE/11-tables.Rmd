@@ -53,6 +53,49 @@ tbl
 
 \pagebreak
 
+```{r Tab-other-cat-ofl}
+
+library(here)
+library(tidyverse)
+library(flextable)
+# library(officer)
+
+# year <- 2023
+
+temp_tab <- read.csv(here(year, "data", "output", paste(year,"Other_Skate_OFL_catch.csv", sep = "-"))) %>%
+  select(-assess_group)
+
+tbl <-flextable::regulartable(temp_tab) %>%
+  flextable::set_caption(paste("Harvest specifications and catch (t) for Other skates in GOA, 2005-", year," (the current management regime for GOA skates was initiated in 2005). Retained is the percent of Catch retained.", sep = "")) %>%
+  flextable::font(fontname = "Times New Roman", part = "all")   %>%
+  flextable::fontsize(size = 11, part = "all") %>%
+  flextable::set_formatter(year = function(x) sprintf("%s", x)) %>%
+  colformat_double(i = 1:length(temp_tab$year), digits = 0) %>%
+  flextable::align(align = "center", part = "header") %>%
+  flextable::align(align = "center", part = "body") %>%
+  flextable::compose(i=1, j=1, value = flextable::as_paragraph(as_b("Year")),part = "header") %>%
+  flextable::compose(i=1, j=2, value = flextable::as_paragraph(as_b("Catch")),part = "header")  %>%
+  flextable::compose(i=1, j=3, value = flextable::as_paragraph(as_b("Retained")),part = "header")  %>%
+  flextable::bold(i = 1, j = c(4,5,6), part = "header")  %>%
+  flextable::bg(j = 4:6, bg = "#f7f7f7", part = "all") %>%  # this provides the shading
+  # flextable::set_formatter(E2 = function(x) paste("(", x,")",sep = "")) %>%
+  # compose(i=15:length(temp_tab$year), j=2, value = as_paragraph( ""), part = "body") %>%
+  flextable::set_formatter(retained = function(x) paste(round(x,0),"%",sep = ""))  %>%
+  flextable::border_remove() %>%
+  flextable::hline_top(part = "header")  %>%
+  flextable::hline_top() %>%
+  flextable::hline_bottom()  %>%
+  flextable::fix_border_issues() %>% 
+  padding(padding = 1, part = "all") %>% 
+  autofit()  
+  
+tbl
+
+
+```
+
+\pagebreak
+
 ```{r Tab-longnose-cat-ofl}
 
 library(here)
@@ -96,49 +139,6 @@ tbl <-flextable::regulartable(temp_tab) %>%
   padding(padding = 1, part = "all") %>% 
   autofit()  
 
-tbl
-
-
-```
-
-\pagebreak
-
-```{r Tab-other-cat-ofl}
-
-library(here)
-library(tidyverse)
-library(flextable)
-# library(officer)
-
-# year <- 2023
-
-temp_tab <- read.csv(here(year, "data", "output", paste(year,"Other_Skate_OFL_catch.csv", sep = "-"))) %>%
-  select(-assess_group)
-
-tbl <-flextable::regulartable(temp_tab) %>%
-  flextable::set_caption(paste("Harvest specifications and catch (t) for Other skates in GOA, 2005-", year," (the current management regime for GOA skates was initiated in 2005). Retained is the percent of Catch retained.", sep = "")) %>%
-  flextable::font(fontname = "Times New Roman", part = "all")   %>%
-  flextable::fontsize(size = 11, part = "all") %>%
-  flextable::set_formatter(year = function(x) sprintf("%s", x)) %>%
-  colformat_double(i = 1:length(temp_tab$year), digits = 0) %>%
-  flextable::align(align = "center", part = "header") %>%
-  flextable::align(align = "center", part = "body") %>%
-  flextable::compose(i=1, j=1, value = flextable::as_paragraph(as_b("Year")),part = "header") %>%
-  flextable::compose(i=1, j=2, value = flextable::as_paragraph(as_b("Catch")),part = "header")  %>%
-  flextable::compose(i=1, j=3, value = flextable::as_paragraph(as_b("Retained")),part = "header")  %>%
-  flextable::bold(i = 1, j = c(4,5,6), part = "header")  %>%
-  flextable::bg(j = 4:6, bg = "#f7f7f7", part = "all") %>%  # this provides the shading
-  # flextable::set_formatter(E2 = function(x) paste("(", x,")",sep = "")) %>%
-  # compose(i=15:length(temp_tab$year), j=2, value = as_paragraph( ""), part = "body") %>%
-  flextable::set_formatter(retained = function(x) paste(round(x,0),"%",sep = ""))  %>%
-  flextable::border_remove() %>%
-  flextable::hline_top(part = "header")  %>%
-  flextable::hline_top() %>%
-  flextable::hline_bottom()  %>%
-  flextable::fix_border_issues() %>% 
-  padding(padding = 1, part = "all") %>% 
-  autofit()  
-  
 tbl
 
 
