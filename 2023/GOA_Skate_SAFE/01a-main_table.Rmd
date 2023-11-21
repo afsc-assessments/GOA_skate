@@ -137,7 +137,7 @@ tbl <- flextable::flextable(dat5) %>%
                      value = flextable::as_paragraph(flextable::as_i("max"),"ABC (t)"), part = "body") %>%
   merge_at(i = 17, j = 3:4, part = "body") %>%
   flextable::compose(i = 17, j = 3:4,
-                     value = flextable::as_paragraph( "As determined " , flextable::as_i("last"), " year for:")) %>%
+                     value = flextable::as_paragraph( "As determined " , flextable::as_i("last"), " full assessment for:")) %>%
    merge_at(i = 17, j = 5:6, part = "body") %>%
   flextable::compose(i = 17, j = 5:6,
                      value = flextable::as_paragraph( "As determined " , flextable::as_i("this"), " year for:"))  %>%
@@ -277,7 +277,7 @@ tbl <- flextable::flextable(dat5) %>%
                      value = flextable::as_paragraph(flextable::as_i("max"),"ABC (t)"), part = "body") %>%
   merge_at(i = 17, j = 3:4, part = "body") %>%
   flextable::compose(i = 17, j = 3:4,
-                     value = flextable::as_paragraph( "As determined " , flextable::as_i("last"), " year for:")) %>%
+                     value = flextable::as_paragraph( "As determined " , flextable::as_i("last"), " full assessment for:")) %>%
    merge_at(i = 17, j = 5:6, part = "body") %>%
   flextable::compose(i = 17, j = 5:6,
                      value = flextable::as_paragraph( "As determined " , flextable::as_i("this"), " year for:"))  %>%
@@ -392,7 +392,7 @@ tbl <- flextable::flextable(dat5) %>%
                      value = flextable::as_paragraph("Biomass (t)"), part = "body") %>%
   merge_at(i = 10, j = 2:3, part = "body") %>%
   flextable::compose(i = 10, j = 2:3,
-                     value = flextable::as_paragraph( "As determined " , flextable::as_i("last"), " year for:")) %>%
+                     value = flextable::as_paragraph( "As determined " , flextable::as_i("last"), " full assessment for:")) %>%
    merge_at(i = 10, j = 4:5, part = "body") %>%
   flextable::compose(i = 10, j = 4:5,
                      value = flextable::as_paragraph( "As determined " , flextable::as_i("this"), " year for:"))   %>%

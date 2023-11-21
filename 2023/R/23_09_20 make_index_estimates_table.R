@@ -9,13 +9,13 @@ library(here)
 library(janitor)
 library(tidyverse)
 library(dplyr)
-# library(readr)
 
 
 ##------------------##
 #    Manual Inputs   #
 ##------------------##
 export_dat <- T                  # Do you want to export the data
+pres_pl   <- T         # T = Create plots for presentation, F = don't create plots for presentations
 current_yr <- 2023               # The current year
 
 
@@ -83,6 +83,113 @@ print(p_survey)
 
 ggsave(here::here(current_yr, "figs", paste(current_yr,"Skate_Biomass_Estimate.png",sep = "_")), dpi = 300, units = 'in',
        height = 7, width = 9,bg = 'white')
+
+
+##===================================##
+#  plots for Plan Team presentation   #
+##===================================##
+if(pres_pl == T){
+  # Different Y scale
+  p_survey2 <- ggplot(data = pl_bio_tot) + 
+    facet_grid(rows = vars(sp), scales = "free_y") +
+    geom_ribbon(aes(x = year, ymin=pred_lci, ymax=pred_uci), alpha=0.5, fill = "grey") +
+    geom_point(aes(x = year, y = obs), position=position_dodge(width=0.6)) +
+    geom_errorbar(aes(x = year, y = obs,ymin=obs_lci, ymax=obs_uci),
+                  width=0.2, position=position_dodge(width=0.6)) +
+    geom_line(aes(x = year, y = pred)) +
+    theme(panel.grid.major = element_line(linewidth = 0.5)) +
+    theme(axis.line = element_line()) +
+    theme(axis.ticks = element_line(colour = "black")) +
+    theme(axis.text = element_text(size =12),
+          axis.title = element_text(size =12),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(size = 12)) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_x_continuous(breaks = seq(from = yr_mm[1], to = yr_mm[2], by = 5)) +
+    labs(x = "Year", y = 'Biomass (t)', title = '') 
+  print(p_survey2)
+  
+  ggsave(here::here(current_yr, "figs", "Presentations", paste(current_yr,"Skate_Biomass_Estimate.png",sep = "_")), dpi = 300, units = 'in',
+         height = 7, width = 9,bg = 'white')
+  
+  # same Y scale
+  p_survey2_same <- ggplot(data = pl_bio_tot) + 
+    facet_grid(rows = vars(sp)) +
+    geom_ribbon(aes(x = year, ymin=pred_lci, ymax=pred_uci), alpha=0.5, fill = "grey") +
+    geom_point(aes(x = year, y = obs), position=position_dodge(width=0.6)) +
+    geom_errorbar(aes(x = year, y = obs,ymin=obs_lci, ymax=obs_uci),
+                  width=0.2, position=position_dodge(width=0.6)) +
+    geom_line(aes(x = year, y = pred)) +
+    theme(panel.grid.major = element_line(linewidth = 0.5)) +
+    theme(axis.line = element_line()) +
+    theme(axis.ticks = element_line(colour = "black")) +
+    theme(axis.text = element_text(size =12),
+          axis.title = element_text(size =12),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(size = 12)) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_x_continuous(breaks = seq(from = yr_mm[1], to = yr_mm[2], by = 5)) +
+    labs(x = "Year", y = 'Biomass (t)', title = '') 
+  print(p_survey2_same)
+  
+  ggsave(here::here(current_yr, "figs", "Presentations", paste(current_yr,"Skate_Biomass_Estimate_same.png",sep = "_")), dpi = 300, units = 'in',
+         height = 7, width = 9,bg = 'white')
+  
+  
+  p_survey2_other <- ggplot(data = pl_bio_tot %>%
+                              filter(sp == "Other Skates")) + 
+    # facet_grid(rows = vars(sp)) +
+    geom_ribbon(aes(x = year, ymin=pred_lci, ymax=pred_uci), alpha=0.5, fill = "grey") +
+    geom_point(aes(x = year, y = obs), position=position_dodge(width=0.6)) +
+    geom_errorbar(aes(x = year, y = obs,ymin=obs_lci, ymax=obs_uci),
+                  width=0.2, position=position_dodge(width=0.6)) +
+    geom_line(aes(x = year, y = pred)) +
+    theme(panel.grid.major = element_line(linewidth = 0.5)) +
+    theme(axis.line = element_line()) +
+    theme(axis.ticks = element_line(colour = "black")) +
+    theme(axis.text = element_text(size =12),
+          axis.title = element_text(size =12),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(size = 12),
+          plot.title = element_text(size=24)) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_x_continuous(breaks = seq(from = yr_mm[1], to = yr_mm[2], by = 5)) +
+    labs(x = "Year", y = 'Biomass (t)', title = 'Other Skates') 
+  print(p_survey2_other)
+  
+  ggsave(here::here(current_yr, "figs", "Presentations", paste(current_yr,"Other_Skate_Biomass_Estimate_.png",sep = "_")), dpi = 300, units = 'in',
+         height = 7, width = 9,bg = 'white')
+  
+  p_survey2_big <- ggplot(data = pl_bio_tot %>%
+                              filter(sp == "Big Skate")) + 
+    # facet_grid(rows = vars(sp)) +
+    geom_ribbon(aes(x = year, ymin=pred_lci, ymax=pred_uci), alpha=0.5, fill = "grey") +
+    geom_point(aes(x = year, y = obs), position=position_dodge(width=0.6)) +
+    geom_errorbar(aes(x = year, y = obs,ymin=obs_lci, ymax=obs_uci),
+                  width=0.2, position=position_dodge(width=0.6)) +
+    geom_line(aes(x = year, y = pred)) +
+    theme(panel.grid.major = element_line(linewidth = 0.5)) +
+    theme(axis.line = element_line()) +
+    theme(axis.ticks = element_line(colour = "black")) +
+    theme(axis.text = element_text(size =12),
+          axis.title = element_text(size =12),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(size = 12),
+          plot.title = element_text(size=24)) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_x_continuous(breaks = seq(from = yr_mm[1], to = yr_mm[2], by = 5)) +
+    labs(x = "Year", y = 'Biomass (t)', title = 'Big Skate') +
+    coord_cartesian(ylim=c(10000, 90000)) # allows Error Bars to go off the page!!!!!!!!!!!!!!
+    # ylim(10000, 90000)
+  print(p_survey2_big)
+  
+  ggsave(here::here(current_yr, "figs", "Presentations", paste(current_yr,"Big_Skate_Biomass_Estimate_.png",sep = "_")), dpi = 300, units = 'in',
+         height = 7, width = 9,bg = 'white')
+  
+}
+
+
+
 
 
 

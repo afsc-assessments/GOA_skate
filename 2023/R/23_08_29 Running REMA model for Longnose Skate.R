@@ -15,6 +15,7 @@ library(ggplot2)
 #    Manual Inputs   #
 ##------------------##
 export_dat <- T            # Do you want to export the data
+pres_pl   <- T         # T = Create plots for presentation, F = don't create plots for presentations
 get_old_summary_values <- T      # Do you want to export the data
 current_yr <- 2023         # The current year
 m <- 0.1                   # Natural mortality
@@ -358,7 +359,8 @@ pl_bio_strata_calc <- ln_all_prop %>%
   mutate(strata2 = case_when(strata == "WGOA" ~ "Western",
                              strata == "CGOA" ~ "Central",
                              strata == "EGOA" ~ "Eastern"))  %>%
-  mutate(across(strata2, factor, levels=c("Western","Central","Eastern")))
+  mutate(across(strata2, factor, levels=c("Western","Central","Eastern"))) %>%
+  mutate(across(strata, factor, levels=c("WGOA","CGOA","EGOA")))
 
 yr_mm <- c(min(pl_bio_strata_calc$year),max(pl_bio_strata_calc$year))
 ggplot2::theme_set(afscassess::theme_report())
@@ -380,6 +382,59 @@ print(p_survey)
 
 ggsave(here::here(current_yr, "figs", paste(current_yr,"Longnose_Regional_Biomass_Estimate.png",sep = "_")), dpi = 300, units = 'in',
        height = 7, width = 9,bg = 'white')
+
+##===================================##
+#  plots for Plan Team presentation   #
+##===================================##
+if(pres_pl == T){
+  p_survey2 <- ggplot(data = pl_bio_strata_calc) + 
+    facet_grid(rows = vars(strata), scales = "free_y") +
+    geom_ribbon(aes(x = year, ymin=pred_strata_lci, ymax=pred_strata_uci), alpha=0.5, fill = "grey") +
+    geom_point(aes(x = year, y = obs), position=position_dodge(width=0.6)) +
+    geom_errorbar(aes(x = year, y = obs,ymin=obs_lci, ymax=obs_uci),
+                  width=0.2, position=position_dodge(width=0.6)) +
+    geom_line(aes(x = year, y = pred_strata)) +
+    theme(panel.grid.major = element_line(linewidth = 0.5)) +
+    theme(axis.line = element_line()) +
+    theme(axis.ticks = element_line(colour = "black")) +
+    theme(axis.text = element_text(size =12),
+          axis.title = element_text(size =12),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(size = 12)) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_x_continuous(breaks = seq(from = yr_mm[1], to = yr_mm[2], by = 5)) +
+    labs(x = "Year", y = 'Biomass (t)', title = '') 
+  print(p_survey2)
+  
+  ggsave(here::here(current_yr, "figs", "Presentations", paste(current_yr,"Longnose_Regional_Biomass_Estimate.png",sep = "_")), dpi = 300, units = 'in',
+         height = 7, width = 9,bg = 'white')
+  
+  # The same Y axis
+  p_survey2_same <- ggplot(data = pl_bio_strata_calc) + 
+    facet_grid(rows = vars(strata)) +
+    geom_ribbon(aes(x = year, ymin=pred_strata_lci, ymax=pred_strata_uci), alpha=0.5, fill = "grey") +
+    geom_point(aes(x = year, y = obs), position=position_dodge(width=0.6)) +
+    geom_errorbar(aes(x = year, y = obs,ymin=obs_lci, ymax=obs_uci),
+                  width=0.2, position=position_dodge(width=0.6)) +
+    geom_line(aes(x = year, y = pred_strata)) +
+    theme(panel.grid.major = element_line(linewidth = 0.5)) +
+    theme(axis.line = element_line()) +
+    theme(axis.ticks = element_line(colour = "black")) +
+    theme(axis.text = element_text(size =12),
+          axis.title = element_text(size =12),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(size = 12)) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_x_continuous(breaks = seq(from = yr_mm[1], to = yr_mm[2], by = 5)) +
+    labs(x = "Year", y = 'Biomass (t)', title = '') 
+  print(p_survey2_same)
+  
+  ggsave(here::here(current_yr, "figs", "Presentations", paste(current_yr,"Longnose_Regional_Biomass_Estimate_same.png",sep = "_")), dpi = 300, units = 'in',
+         height = 7, width = 9,bg = 'white')
+  
+  
+}
+
 
 
 ## Plot using R code

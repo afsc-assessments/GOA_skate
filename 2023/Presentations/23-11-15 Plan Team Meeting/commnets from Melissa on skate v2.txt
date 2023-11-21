@@ -1,0 +1,11 @@
+Hi Lee,
+
+Thanks for the chance to see your slides, and here's some feedback for you.
+
+1. The scales on the y axes on some slides make them hard to compare across regions and species. Suggest using a common y axis for the first look, then adding a figure as needed to hone in on trends where the y scales may be too small to see much change.
+2. Slides 18, 19, and 20 - verify that the years are correct in the status row. 
+
+Otherwise this is looking good.
+
+Cheers,
+Melissa

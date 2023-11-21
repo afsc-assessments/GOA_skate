@@ -15,8 +15,9 @@ library(dplyr)
 ##---------------##
 #  Manual Inputs  #
 ##---------------##
-export_dat <- T        # T = export pulled data, F = do not export pulled data
+export_dat <- F        # T = export pulled data, F = do not export pulled data
 quary_dat <- F         # query data from SQL
+pres_pl   <- T         # T = Create plots for presentation, F = don't create plots for presentations    
 current_yr <- 2023     # the current year
 
 
@@ -31,15 +32,18 @@ if(quary_dat == T){
   
   # AKFIN database #
   database_akfin <- 'akfin'
-  channel_akfin <- RODBC::odbcConnect(database_akfin, uid = key_list(database_akfin)$username,
+  akfin_user_nam <- key_list(database_akfin)$username  # Username
+  akfin_password <- key_get(database_akfin, keyring::key_list(database_akfin)$username) # Password
+  
+  channel_akfin <- RODBC::odbcConnect(database_akfin, uid = akfin_user_nam,
                                       pwd = key_get(database_akfin, keyring::key_list(database_akfin)$username),
                                       believeNRows=FALSE)  # gains access to database
   
   # AFSC database #
-  database_afsc <- 'afsc'
-  channel_afsc <- RODBC::odbcConnect(database_afsc, uid = key_list(database_afsc)$username,
-                                     pwd = key_get(database_afsc, keyring::key_list(database_afsc)$username),
-                                     believeNRows=FALSE)  # gains access to database
+  # database_afsc <- 'afsc'
+  # channel_afsc <- RODBC::odbcConnect(database_afsc, uid = key_list(database_afsc)$username,
+  #                                    pwd = key_get(database_afsc, keyring::key_list(database_afsc)$username),
+  #                                    believeNRows=FALSE)  # gains access to database
 }
 
 
@@ -131,7 +135,7 @@ if(export_dat == T) write_csv(catch_total, here::here(current_yr, "data", "outpu
 
 # Catch by species, strata and percent retained
 catch_s_r <- catch %>%
-  filter(year >= 2005) %>%
+  filter(year >= 2005) %>%  # the strata divide of skates in assessments started in 2005
   summarise(catch = sum(weight_posted, na.rm = T),
             .by = c(year, assess_group, strata)) %>%
   arrange(factor(strata, levels = c("WGOA","CGOA","EGOA"))) %>%
@@ -282,7 +286,12 @@ area_specs <- big_cat_OFL %>%
             pivot_wider(names_from = Type, values_from = value) %>%
             pivot_longer(cols = c('TAC', 'ABC')) %>%
             arrange(factor(Area, levels = c("W","C","E")))) %>%
-  mutate(across(Area, factor, levels=c("W","C","E")))
+  mutate(across(Area, factor, levels=c("W","C","E"))) %>%
+  mutate(Area2 = case_when(Area == "W" ~ "WGOA",
+                           Area == "C" ~ "CGOA",
+                           Area == "E" ~ "EGOA")) %>%
+  mutate(across(Area2, factor, levels=c("WGOA","CGOA","EGOA")))
+
 
 area_tac_abc_pl <- ggplot(area_specs %>%
                         filter(year <= current_yr),
@@ -308,4 +317,162 @@ print(area_tac_abc_pl)
 
 ggsave(here::here(current_yr, "figs", paste(current_yr,"Area_Skate_catch_specs.png",sep = "_")), dpi = 300, units = 'in',
        height = 7, width = 9,bg = 'white')
+
+##===================================##
+#  plots for Plan Team presentation   #
+##===================================##
+if(pres_pl == T){
+  tot_tac_abc_pl2 <- ggplot(tot_specs %>%
+                              filter(year <= current_yr),
+                            aes(x = year)) +
+    geom_bar(aes(y = value, fill = name),
+             stat = 'identity', position = 'identity',
+             col = 'black', alpha = .25) +
+    # facet_wrap(~ assess_group) +
+    facet_grid(rows = vars(sp)) +
+    geom_point(aes(y = Catch, shape = 'Catch'))  +
+    theme(panel.grid.major = element_line(linewidth = 0.5)) +
+    theme(axis.line = element_line()) +
+    theme(axis.ticks = element_line(colour = "black")) +
+    theme(axis.text = element_text(size =12),
+          axis.title = element_text(size =12),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(size = 12)) +
+    geom_line(aes(y = Catch, lty = 'Catch')) +
+    scale_y_continuous(labels = scales::comma)  +
+    scale_fill_manual(values = c('white', 'black'))  +
+    theme(legend.position = "top") +
+    labs(x = NULL, y = 'Biomass (t)', fill = NULL, shape = NULL, lty = NULL)
+  print(tot_tac_abc_pl2)
+  
+  ggsave(here::here(current_yr, "figs", "Presentations", paste(current_yr,"All_Skate_catch_specs.png",sep = "_")), dpi = 300, units = 'in',
+         height = 7, width = 9,bg = 'white')
+  
+  
+  # Big skate area specific specs
+  area_tac_abc_big <- ggplot(area_specs %>%
+                               filter(year <= current_yr,
+                                      sp == 'Big Skate'),
+                             aes(x = year)) +
+    geom_bar(aes(y = value, fill = name),
+             stat = 'identity', position = 'identity',
+             col = 'black', alpha = .25) +
+    # facet_wrap(~ Area2) +
+    facet_grid(rows = vars(Area2), scales = "free_y") +
+    geom_point(aes(y = Catch, shape = 'Catch'))  +
+    theme(panel.grid.major = element_line(linewidth = 0.5)) +
+    theme(axis.line = element_line()) +
+    theme(axis.ticks = element_line(colour = "black")) +
+    theme(axis.text = element_text(size =12),
+          axis.title = element_text(size =12),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(size = 12)) +
+    geom_line(aes(y = Catch, lty = 'Catch')) +
+    scale_y_continuous(labels = scales::comma)  +
+    scale_fill_manual(values = c('white', 'black'))  +
+    theme(legend.position = "right") +
+    # guides(shape = guide_legend(override.aes = list(size = 0.8))) +
+    # theme(legend.title = element_text(size = 3), 
+    #         legend.text = element_text(size = 3)) +
+    labs(x = NULL, y = 'Biomass (t)', fill = NULL, shape = NULL, lty = NULL)
+  print(area_tac_abc_big)
+  
+  ggsave(here::here(current_yr, "figs", "Presentations", paste(current_yr,"Big_Skate_area_catch_specs.png",sep = "_")), dpi = 300, units = 'in',
+         height = 7, width = 9,bg = 'white')
+  
+  
+  area_tac_abc_big_same <- ggplot(area_specs %>%
+                               filter(year <= current_yr,
+                                      sp == 'Big Skate'),
+                             aes(x = year)) +
+    geom_bar(aes(y = value, fill = name),
+             stat = 'identity', position = 'identity',
+             col = 'black', alpha = .25) +
+    # facet_wrap(~ Area2) +
+    facet_grid(rows = vars(Area2)) +
+    geom_point(aes(y = Catch, shape = 'Catch'))  +
+    theme(panel.grid.major = element_line(linewidth = 0.5)) +
+    theme(axis.line = element_line()) +
+    theme(axis.ticks = element_line(colour = "black")) +
+    theme(axis.text = element_text(size =12),
+          axis.title = element_text(size =12),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(size = 12)) +
+    geom_line(aes(y = Catch, lty = 'Catch')) +
+    scale_y_continuous(labels = scales::comma)  +
+    scale_fill_manual(values = c('white', 'black'))  +
+    theme(legend.position = "right") +
+    # guides(shape = guide_legend(override.aes = list(size = 0.8))) +
+    # theme(legend.title = element_text(size = 3), 
+    #         legend.text = element_text(size = 3)) +
+    labs(x = NULL, y = 'Biomass (t)', fill = NULL, shape = NULL, lty = NULL)
+  print(area_tac_abc_big_same)
+  
+  ggsave(here::here(current_yr, "figs", "Presentations", paste(current_yr,"Big_Skate_area_catch_specs_same.png",sep = "_")), dpi = 300, units = 'in',
+         height = 7, width = 9,bg = 'white')
+  
+  
+  # Longnose skate area specific specs
+  area_tac_abc_ln <- ggplot(area_specs %>%
+                              filter(year <= current_yr,
+                                     sp == 'Longnose Skate'),
+                            aes(x = year)) +
+    geom_bar(aes(y = value, fill = name),
+             stat = 'identity', position = 'identity',
+             col = 'black', alpha = .25) +
+    # facet_wrap(~ Area2) +
+    facet_grid(rows = vars(Area2), scales = "free_y") +
+    geom_point(aes(y = Catch, shape = 'Catch'))  +
+    theme(panel.grid.major = element_line(linewidth = 0.5)) +
+    theme(axis.line = element_line()) +
+    theme(axis.ticks = element_line(colour = "black")) +
+    theme(axis.text = element_text(size =12),
+          axis.title = element_text(size =12),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(size = 12)) +
+    geom_line(aes(y = Catch, lty = 'Catch')) +
+    scale_y_continuous(labels = scales::comma)  +
+    scale_fill_manual(values = c('white', 'black'))  +
+    theme(legend.position = "right") +
+    # guides(shape = guide_legend(override.aes = list(size = 0.8))) +
+    # theme(legend.title = element_text(size = 3), 
+    #         legend.text = element_text(size = 3)) +
+    labs(x = NULL, y = 'Biomass (t)', fill = NULL, shape = NULL, lty = NULL)
+  print(area_tac_abc_ln)
+  
+  ggsave(here::here(current_yr, "figs", "Presentations", paste(current_yr,"Longnose_Skate_area_catch_specs.png",sep = "_")), dpi = 300, units = 'in',
+         height = 7, width = 9,bg = 'white')
+  
+  area_tac_abc_ln_same <- ggplot(area_specs %>%
+                              filter(year <= current_yr,
+                                     sp == 'Longnose Skate'),
+                            aes(x = year)) +
+    geom_bar(aes(y = value, fill = name),
+             stat = 'identity', position = 'identity',
+             col = 'black', alpha = .25) +
+    facet_grid(rows = vars(Area2)) +
+    geom_point(aes(y = Catch, shape = 'Catch'))  +
+    theme(panel.grid.major = element_line(linewidth = 0.5)) +
+    theme(axis.line = element_line()) +
+    theme(axis.ticks = element_line(colour = "black")) +
+    theme(axis.text = element_text(size =12),
+          axis.title = element_text(size =12),
+          legend.text = element_text(size = 12),
+          strip.text = element_text(size = 12)) +
+    geom_line(aes(y = Catch, lty = 'Catch')) +
+    scale_y_continuous(labels = scales::comma)  +
+    scale_fill_manual(values = c('white', 'black'))  +
+    theme(legend.position = "right") +
+    # guides(shape = guide_legend(override.aes = list(size = 0.8))) +
+    # theme(legend.title = element_text(size = 3), 
+    #         legend.text = element_text(size = 3)) +
+    labs(x = NULL, y = 'Biomass (t)', fill = NULL, shape = NULL, lty = NULL)
+  print(area_tac_abc_ln_same)
+  
+  ggsave(here::here(current_yr, "figs", "Presentations", paste(current_yr,"Longnose_Skate_area_catch_specs_same.png",sep = "_")), dpi = 300, units = 'in',
+         height = 7, width = 9,bg = 'white')
+
+}
+
+
 
